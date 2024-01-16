@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -23,5 +24,12 @@ public class ScholarServiceAdapterImpl implements IScholarServicePort {
         log.info("Class {} method getScholar", this.getClass().getName());
 
         return accountRepositoryPort.getScholar(id);
+    }
+
+    @Override
+    public List<GetScholarModel> getScholars() {
+        log.info("Class {} method getScholars", this.getClass().getName());
+
+        return accountRepositoryPort.getScholars();
     }
 }

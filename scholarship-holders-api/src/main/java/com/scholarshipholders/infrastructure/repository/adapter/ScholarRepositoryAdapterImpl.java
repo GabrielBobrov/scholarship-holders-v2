@@ -10,7 +10,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Slf4j
@@ -34,6 +36,21 @@ public class ScholarRepositoryAdapterImpl implements IScholarRepositoryPort {
         log.info("GetScholarModel {}", getScholarModel);
 
         return getScholarModel;
+    }
+
+    @Override
+    public List<GetScholarModel> getScholars() {
+        log.info("Class {} method getScholars", this.getClass().getName());
+
+        List<ScholarEntity> scholarEntities = springAccountRepository.findAll();
+        log.info("ScholarEntity {}", scholarEntities);
+
+        List<GetScholarModel> models = scholarEntities.stream()
+                .map(accountInfrastructureMapper::fromScholarEntityToGetScholarModel)
+                .collect(Collectors.toList());
+        log.info("List<GetScholarModel> {}", models);
+
+        return models;
     }
 
 }

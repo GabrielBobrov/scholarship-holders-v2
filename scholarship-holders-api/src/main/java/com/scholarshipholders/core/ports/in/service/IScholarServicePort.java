@@ -4,11 +4,14 @@ package com.scholarshipholders.core.ports.in.service;
 
 import com.scholarshipholders.core.model.GetScholarModel;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface IScholarServicePort {
 
     GetScholarModel getScholar(UUID id);
+
+    List<GetScholarModel> getScholars();
 }
 
 
