@@ -3,10 +3,13 @@ package com.scholarshipholders.entrypoint.controller;
 
 import com.scholarshipholders.core.model.CreateScholarModel;
 import com.scholarshipholders.core.model.GetScholarModel;
+import com.scholarshipholders.core.model.UpdateScholarModel;
 import com.scholarshipholders.core.ports.in.service.IScholarServicePort;
 import com.scholarshipholders.entrypoint.UrlConstant;
 import com.scholarshipholders.entrypoint.dto.request.CreateScholarRequestDTO;
+import com.scholarshipholders.entrypoint.dto.request.UpdateScholarRequestDTO;
 import com.scholarshipholders.entrypoint.dto.response.GetScholarResponseDTO;
+import com.scholarshipholders.entrypoint.dto.response.UpdateScholarResponseDTO;
 import com.scholarshipholders.entrypoint.mapper.IScholarEntrypointMapper;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -15,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -69,6 +73,21 @@ public class ScholarController {
 
         CreateScholarModel createScholarModel = scholarEntrypointMapper.fromCreateScholarRequestDTOToCreateScholarModel(createScholarRequestDTO);
         scholarServicePort.createScholar(createScholarModel);
+    }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.OK)
+    public UpdateScholarResponseDTO updateScholar(@RequestBody @Valid UpdateScholarRequestDTO updateScholarRequestDTO) {
+        log.info("Class {} method updateScholar", this.getClass().getName());
+        log.info("UpdateScholarRequestDTO {}", updateScholarRequestDTO);
+
+        UpdateScholarModel updateScholarModel = scholarEntrypointMapper.fromUpdateScholarRequestDTOToUpdateScholarModel(updateScholarRequestDTO);
+        UpdateScholarModel scholarModel = scholarServicePort.updateScholar(updateScholarModel);
+
+        UpdateScholarResponseDTO updateScholarResponseDTO = scholarEntrypointMapper.fromUpdateScholarModelToUpdateScholarResponseDTO(scholarModel);
+        log.info("UpdateScholarResponseDTO {}", updateScholarResponseDTO);
+
+        return updateScholarResponseDTO;
     }
 
 

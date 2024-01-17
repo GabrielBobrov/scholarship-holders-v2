@@ -1,17 +1,16 @@
-package com.scholarshipholders.entrypoint.dto.request;
+package com.scholarshipholders.entrypoint.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -19,24 +18,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.LowerCamelCaseStrategy.class)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class CreateScholarRequestDTO {
+public class UpdateScholarResponseDTO {
 
-    @NotBlank
+
+    private UUID id;
     private String fullName;
-
-    @NotBlank
     private String document;
-
-    @NotNull
     private DocumentTypeEnum documentType;
-
-    @NotNull
     private Integer bankCode;
-
-    @NotNull
     private Integer bankAgency;
-
-    @NotNull
     private Long accountNumber;
-
 }

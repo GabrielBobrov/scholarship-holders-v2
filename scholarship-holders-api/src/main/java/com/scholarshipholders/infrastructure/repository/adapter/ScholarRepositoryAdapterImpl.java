@@ -4,6 +4,7 @@ package com.scholarshipholders.infrastructure.repository.adapter;
 import com.scholarshipholders.core.exception.NotFoundException;
 import com.scholarshipholders.core.model.CreateScholarModel;
 import com.scholarshipholders.core.model.GetScholarModel;
+import com.scholarshipholders.core.model.UpdateScholarModel;
 import com.scholarshipholders.core.ports.out.repository.IScholarRepositoryPort;
 import com.scholarshipholders.infrastructure.entity.ScholarEntity;
 import com.scholarshipholders.infrastructure.mapper.IScholarInfrastructureMapper;
@@ -63,6 +64,20 @@ public class ScholarRepositoryAdapterImpl implements IScholarRepositoryPort {
         log.info(SCHOLAR_ENTITY_LOG, createScholarModel);
 
         springScholarRepository.save(entity);
+    }
+
+    @Override
+    public UpdateScholarModel updateScholar(UpdateScholarModel updateScholarModel) {
+        log.info("Class {} method updateScholar", this.getClass().getName());
+
+        ScholarEntity entity = scholarInfrastructureMapper.fromUpdateScholarModelToScholarEntity(updateScholarModel);
+        ScholarEntity scholarEntity = springScholarRepository.save(entity);
+        log.info("Scholar entity updated {}", scholarEntity);
+
+        UpdateScholarModel updateScholarModelUpdated = scholarInfrastructureMapper.fromScholarEntityToUpdateScholarModel(scholarEntity);
+        log.info("UpdateScholarModel {}", updateScholarModelUpdated);
+
+        return updateScholarModelUpdated;
     }
 
 }

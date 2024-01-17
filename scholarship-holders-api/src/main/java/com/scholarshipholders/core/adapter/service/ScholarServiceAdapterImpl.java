@@ -3,6 +3,7 @@ package com.scholarshipholders.core.adapter.service;
 
 import com.scholarshipholders.core.model.CreateScholarModel;
 import com.scholarshipholders.core.model.GetScholarModel;
+import com.scholarshipholders.core.model.UpdateScholarModel;
 import com.scholarshipholders.core.ports.in.service.IScholarServicePort;
 import com.scholarshipholders.core.ports.out.repository.IScholarRepositoryPort;
 import jakarta.transaction.Transactional;
@@ -42,5 +43,12 @@ public class ScholarServiceAdapterImpl implements IScholarServicePort {
 
         scholarRepositoryPort.createScholar(createScholarModel);
 
+    }
+
+    @Override
+    public UpdateScholarModel updateScholar(UpdateScholarModel updateScholarModel) {
+        log.info("Class {} method updateScholar", this.getClass().getName());
+
+        return scholarRepositoryPort.updateScholar(updateScholarModel);
     }
 }
