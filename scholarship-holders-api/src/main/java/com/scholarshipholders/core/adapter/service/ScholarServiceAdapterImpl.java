@@ -38,6 +38,7 @@ public class ScholarServiceAdapterImpl implements IScholarServicePort {
     @Override
     @Transactional
     public void createScholar(CreateScholarModel createScholarModel) {
+        log.info("Class {} method createScholar", this.getClass().getName());
 
         scholarRepositoryPort.createScholar(createScholarModel);
 
