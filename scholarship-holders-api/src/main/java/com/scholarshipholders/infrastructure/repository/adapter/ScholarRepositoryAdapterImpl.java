@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class ScholarRepositoryAdapterImpl implements IScholarRepositoryPort {
 
+    private static final String SCHOLAR_ENTITY_LOG = "ScholarEntity {}";
     private final ISpringScholarRepositoryAdapter springScholarRepository;
     private final IScholarInfrastructureMapper scholarInfrastructureMapper;
 
@@ -31,7 +32,7 @@ public class ScholarRepositoryAdapterImpl implements IScholarRepositoryPort {
 
         ScholarEntity scholarEntity = springScholarRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Bolsista não encontrado com id " + id));
-        log.info("ScholarEntity {}", scholarEntity);
+        log.info(SCHOLAR_ENTITY_LOG, scholarEntity);
 
         GetScholarModel getScholarModel = scholarInfrastructureMapper.fromScholarEntityToGetScholarModel(scholarEntity);
         log.info("GetScholarModel {}", getScholarModel);
@@ -44,7 +45,7 @@ public class ScholarRepositoryAdapterImpl implements IScholarRepositoryPort {
         log.info("Class {} method getScholars", this.getClass().getName());
 
         List<ScholarEntity> scholarEntities = springScholarRepository.findAll();
-        log.info("ScholarEntity {}", scholarEntities);
+        log.info(SCHOLAR_ENTITY_LOG, scholarEntities);
 
         List<GetScholarModel> models = scholarEntities.stream()
                 .map(scholarInfrastructureMapper::fromScholarEntityToGetScholarModel)
@@ -59,7 +60,7 @@ public class ScholarRepositoryAdapterImpl implements IScholarRepositoryPort {
         log.info("Class {} method createScholar", this.getClass().getName());
 
         ScholarEntity entity = scholarInfrastructureMapper.fromCreateScholarModelToScholarEntity(createScholarModel);
-        log.info("ScholarEntity {}", createScholarModel);
+        log.info(SCHOLAR_ENTITY_LOG, createScholarModel);
 
         springScholarRepository.save(entity);
     }
