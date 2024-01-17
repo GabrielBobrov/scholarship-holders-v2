@@ -3,6 +3,7 @@ package com.scholarshipholders.entrypoint.dto.response;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class GetScholarResponseDTO {
     private UUID id;
     private String fullName;
     private String document;
+    private DocumentTypeEnum documentType;
     private Integer bankCode;
     private Integer bankAgency;
     private Long accountNumber;
