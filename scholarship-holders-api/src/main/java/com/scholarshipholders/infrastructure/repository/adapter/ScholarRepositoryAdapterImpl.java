@@ -2,6 +2,7 @@ package com.scholarshipholders.infrastructure.repository.adapter;
 
 
 import com.scholarshipholders.core.exception.NotFoundException;
+import com.scholarshipholders.core.model.CreateScholarModel;
 import com.scholarshipholders.core.model.GetScholarModel;
 import com.scholarshipholders.core.ports.out.repository.IScholarRepositoryPort;
 import com.scholarshipholders.infrastructure.entity.ScholarEntity;
@@ -20,19 +21,19 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class ScholarRepositoryAdapterImpl implements IScholarRepositoryPort {
 
-    private final ISpringScholarRepositoryAdapter springAccountRepository;
-    private final IScholarInfrastructureMapper accountInfrastructureMapper;
+    private final ISpringScholarRepositoryAdapter springScholarRepository;
+    private final IScholarInfrastructureMapper scholarInfrastructureMapper;
 
 
     @Override
     public GetScholarModel getScholar(UUID id) {
         log.info("Class {} method getScholar", this.getClass().getName());
 
-        ScholarEntity scholarEntity = springAccountRepository.findById(id)
+        ScholarEntity scholarEntity = springScholarRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Bolsista não encontrado com id " + id));
         log.info("ScholarEntity {}", scholarEntity);
 
-        GetScholarModel getScholarModel = accountInfrastructureMapper.fromScholarEntityToGetScholarModel(scholarEntity);
+        GetScholarModel getScholarModel = scholarInfrastructureMapper.fromScholarEntityToGetScholarModel(scholarEntity);
         log.info("GetScholarModel {}", getScholarModel);
 
         return getScholarModel;
@@ -42,15 +43,25 @@ public class ScholarRepositoryAdapterImpl implements IScholarRepositoryPort {
     public List<GetScholarModel> getScholars() {
         log.info("Class {} method getScholars", this.getClass().getName());
 
-        List<ScholarEntity> scholarEntities = springAccountRepository.findAll();
+        List<ScholarEntity> scholarEntities = springScholarRepository.findAll();
         log.info("ScholarEntity {}", scholarEntities);
 
         List<GetScholarModel> models = scholarEntities.stream()
-                .map(accountInfrastructureMapper::fromScholarEntityToGetScholarModel)
+                .map(scholarInfrastructureMapper::fromScholarEntityToGetScholarModel)
                 .collect(Collectors.toList());
         log.info("List<GetScholarModel> {}", models);
 
         return models;
+    }
+
+    @Override
+    public void createScholar(CreateScholarModel createScholarModel) {
+        log.info("Class {} method createScholar", this.getClass().getName());
+
+        ScholarEntity entity = scholarInfrastructureMapper.fromCreateScholarModelToScholarEntity(createScholarModel);
+        log.info("ScholarEntity {}", createScholarModel);
+
+        springScholarRepository.save(entity);
     }
 
 }

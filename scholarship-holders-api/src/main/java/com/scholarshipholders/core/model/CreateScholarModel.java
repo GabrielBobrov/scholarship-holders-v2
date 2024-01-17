@@ -10,9 +10,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @SuperBuilder(toBuilder = true)
-public class GetScholarModel extends ScholarModelBase {
+public class CreateScholarModel extends ScholarModelBase {
 
-    private UUID id;
-    private LocalDate createdAt;
 
 }

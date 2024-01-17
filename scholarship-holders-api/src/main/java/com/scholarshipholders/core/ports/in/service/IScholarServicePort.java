@@ -2,6 +2,7 @@ package com.scholarshipholders.core.ports.in.service;
 
 
 
+import com.scholarshipholders.core.model.CreateScholarModel;
 import com.scholarshipholders.core.model.GetScholarModel;
 
 import java.util.List;
@@ -12,6 +13,8 @@ public interface IScholarServicePort {
     GetScholarModel getScholar(UUID id);
 
     List<GetScholarModel> getScholars();
+
+    void createScholar(CreateScholarModel createScholarModel);
 }
 
 

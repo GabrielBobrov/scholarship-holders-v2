@@ -1,7 +1,10 @@
 package com.scholarshipholders.infrastructure.entity;
 
+import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,6 +37,10 @@ public class ScholarEntity {
 
     @Column(name = "document")
     private String document;
+
+    @Column(name = "document_type")
+    @Enumerated(EnumType.STRING)
+    private DocumentTypeEnum documentType;
 
     @Column(name = "bank_code")
     private Integer bankCode;

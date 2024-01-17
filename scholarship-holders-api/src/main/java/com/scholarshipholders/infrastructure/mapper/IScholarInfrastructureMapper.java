@@ -1,6 +1,7 @@
 package com.scholarshipholders.infrastructure.mapper;
 
 
+import com.scholarshipholders.core.model.CreateScholarModel;
 import com.scholarshipholders.core.model.GetScholarModel;
 import com.scholarshipholders.infrastructure.entity.ScholarEntity;
 import org.mapstruct.Mapper;
@@ -16,6 +17,9 @@ public interface IScholarInfrastructureMapper {
 
     @Mapping(source = "createdAt", target = "createdAt", qualifiedByName = "map")
     GetScholarModel fromScholarEntityToGetScholarModel(ScholarEntity scholarEntity);
+
+    ScholarEntity fromCreateScholarModelToScholarEntity(CreateScholarModel createScholarModel);
+
 
     @Named("map")
     default LocalDate map(OffsetDateTime value) {
