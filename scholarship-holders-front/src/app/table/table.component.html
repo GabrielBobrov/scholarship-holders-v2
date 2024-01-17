@@ -1,0 +1,52 @@
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  th {
+    background-color: #4caf50;
+    color: white;
+  }
+</style>
+<table>
+  <thead>
+    <tr>
+      <th>Nome completo</th>
+      <th>Documento</th>
+      <th>Tipo do documento</th>
+      <th>Dados Bancários</th>
+      <th>Criado em</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td>{{ row.fullName }}</td>
+      <td>{{ row.document }}</td>
+      <td>{{ row.documentType }}</td>
+      <td>
+        {{
+          "Código do Banco: " +
+            row.bankCode +
+            ", Agência do Banco: " +
+            row.bankAgency +
+            ", Número da Conta: " +
+            row.accountNumber
+        }}
+      </td>
+      <td>{{ row.createdAt }}</td>
+      <td>
+        <button onclick="openModalUpdateScholar(data)">Editar</button>
+        <button>Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
