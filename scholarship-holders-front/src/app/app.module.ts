@@ -11,6 +11,7 @@ import { AngularPrimeNgModule } from './modules/angular-primeng.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { CreateScholarComponent } from './create-scholar/create-scholar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
     InitialPageComponent,
     TableComponent,
     UpdateScholarComponent,
+    CreateScholarComponent,
   ],
   imports: [
     BrowserModule,

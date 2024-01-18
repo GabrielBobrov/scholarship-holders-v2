@@ -15,5 +15,10 @@ export class ScholarService {
     return this.http.put('http://localhost:8080/scholars', scholar);
   }
 
+  createScholar(scholar: ScholarDTO) {
+    console.log(scholar);
+    return this.http.post('http://localhost:8080/scholars', scholar);
+  }
+
   constructor(private http: HttpClient) {}
 }

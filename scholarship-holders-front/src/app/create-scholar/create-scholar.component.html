@@ -1,6 +1,6 @@
 <div class="modal-content green-theme">
-  <h4>Editar Registro</h4>
-  <form #editForm="ngForm" (ngSubmit)="onSubmit()">
+  <h4>Criar Novo Registro</h4>
+  <form #createForm="ngForm" (ngSubmit)="onSubmit()">
     <label>
       Nome Completo:
       <input type="text" [(ngModel)]="row.fullName" name="fullName" required />
