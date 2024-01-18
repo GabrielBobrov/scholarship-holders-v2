@@ -10,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AngularPrimeNgModule } from './modules/angular-primeng.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [DynamicDialogConfig, DynamicDialogRef],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

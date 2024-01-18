@@ -6,7 +6,6 @@ export class ScholarDTO {
     public documentType?: string,
     public bankCode?: number,
     public bankAgency?: number,
-    public accountNumber?: number,
-    public createdAt?: string
+    public accountNumber?: number
   ) {}
 }

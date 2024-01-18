@@ -22,7 +22,6 @@ public class UpdateScholarRequestDTO {
 
     @NotNull
     private UUID id;
-
     private String fullName;
     private String document;
     private DocumentTypeEnum documentType;

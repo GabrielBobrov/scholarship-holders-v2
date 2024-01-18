@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { ScholarDTO } from '../dtos/response/scholarDto';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { ScholarDTO } from '../dtos/response/scholarDTO';
+import { ScholarService } from '../services/scholar.service';
 
 @Component({
   selector: 'app-update-scholar',
@@ -9,15 +10,26 @@ import { DynamicDialogConfig } from 'primeng/dynamicdialog';
   styleUrls: ['./update-scholar.component.css'],
 })
 export class UpdateScholarComponent {
-  constructor(public router: Router, public config: DynamicDialogConfig) {}
+  constructor(
+    public router: Router,
+    public config: DynamicDialogConfig,
+    private ref: DynamicDialogRef,
+    private scholarService: ScholarService
+  ) {}
   row = new ScholarDTO();
+  originalData: any;
 
   ngOnInit(): void {
     this.row = this.config.data.row;
+    this.originalData = this.row;
   }
 
   onSubmit() {
-    // Aqui você pode adicionar o código para salvar as alterações no registro.
-    console.log(this.row);
+    this.scholarService.updateScholar(this.row).subscribe();
+    this.closeModal();
+  }
+
+  closeModal() {
+    window.location.reload();
   }
 }
