@@ -27,7 +27,7 @@
       <td>{{ row.createdAt | date : "dd/MM/yyyy" }}</td>
       <td>
         <button (click)="openModalUpdateScholar(row)">Editar</button>
-        <button>Excluir</button>
+        <button (click)="deleteScholar(row)">Excluir</button>
       </td>
     </tr>
   </tbody>

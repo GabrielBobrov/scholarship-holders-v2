@@ -23,10 +23,15 @@ export class TableComponent implements OnInit {
   }
 
   openModalUpdateScholar(row: any) {
-    console.log(row);
     this.dialogService.open(UpdateScholarComponent, {
       data: { row: row },
       showHeader: false,
     });
+  }
+
+  deleteScholar(row: any) {
+    console.log(row);
+    this.scholarService.deleteScholar(row.id);
+    window.location.reload();
   }
 }
