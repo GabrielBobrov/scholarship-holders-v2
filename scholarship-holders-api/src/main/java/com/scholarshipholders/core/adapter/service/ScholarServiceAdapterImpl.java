@@ -51,4 +51,12 @@ public class ScholarServiceAdapterImpl implements IScholarServicePort {
 
         return scholarRepositoryPort.updateScholar(updateScholarModel);
     }
+
+    @Override
+    public void deleteScholar(UUID id) {
+        log.info("Class {} method deleteScholar", this.getClass().getName());
+
+        GetScholarModel scholar = scholarRepositoryPort.getScholar(id);
+        scholarRepositoryPort.deleteScholar(scholar);
+    }
 }

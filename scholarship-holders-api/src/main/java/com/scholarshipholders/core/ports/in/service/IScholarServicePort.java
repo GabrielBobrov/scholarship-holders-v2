@@ -19,6 +19,8 @@ public interface IScholarServicePort {
 
     UpdateScholarModel updateScholar(UpdateScholarModel updateScholarModel);
 
+    void deleteScholar(UUID id);
+
 }
 
 

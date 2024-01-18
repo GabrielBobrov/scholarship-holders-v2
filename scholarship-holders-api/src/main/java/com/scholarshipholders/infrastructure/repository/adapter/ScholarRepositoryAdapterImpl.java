@@ -80,4 +80,15 @@ public class ScholarRepositoryAdapterImpl implements IScholarRepositoryPort {
         return updateScholarModelUpdated;
     }
 
+    @Override
+    public void deleteScholar(GetScholarModel getScholarModel) {
+        log.info("Class {} method deleteScholar", this.getClass().getName());
+
+        ScholarEntity scholarEntity = scholarInfrastructureMapper.fromGetScholarModelTScholarEntity(getScholarModel);
+        log.info("ScholarEntity {}", scholarEntity);
+
+        springScholarRepository.delete(scholarEntity);
+
+    }
+
 }

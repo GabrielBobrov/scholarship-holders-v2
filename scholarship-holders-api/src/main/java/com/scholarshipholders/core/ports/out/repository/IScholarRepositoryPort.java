@@ -18,4 +18,5 @@ public interface IScholarRepositoryPort {
 
     UpdateScholarModel updateScholar(UpdateScholarModel updateScholarModel);
 
+    void deleteScholar(GetScholarModel entity);
 }

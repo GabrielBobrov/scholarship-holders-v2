@@ -19,13 +19,14 @@ public interface IScholarInfrastructureMapper {
     @Mapping(source = "createdAt", target = "createdAt", qualifiedByName = "map")
     GetScholarModel fromScholarEntityToGetScholarModel(ScholarEntity scholarEntity);
 
+    @Mapping(source = "createdAt", target = "createdAt", ignore = true)
+    ScholarEntity fromGetScholarModelTScholarEntity(GetScholarModel getScholarModel);
+
     ScholarEntity fromCreateScholarModelToScholarEntity(CreateScholarModel createScholarModel);
 
-    ScholarEntity fromUpdateScholarModelToScholarEntity(UpdateScholarModel createScholarModel);
+    ScholarEntity fromUpdateScholarModelToScholarEntity(UpdateScholarModel updateScholarModel);
 
-    UpdateScholarModel fromScholarEntityToUpdateScholarModel(ScholarEntity createScholarModel);
-
-
+    UpdateScholarModel fromScholarEntityToUpdateScholarModel(ScholarEntity scholarEntity);
 
     @Named("map")
     default LocalDate map(OffsetDateTime value) {
