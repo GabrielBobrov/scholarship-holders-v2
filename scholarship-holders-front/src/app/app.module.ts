@@ -1,15 +1,31 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
 import { TableComponent } from './table/table.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UpdateScholarComponent } from './update-scholar/update-scholar.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { AngularPrimeNgModule } from './modules/angular-primeng.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, InitialPageComponent, TableComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    InitialPageComponent,
+    TableComponent,
+    UpdateScholarComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AngularPrimeNgModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

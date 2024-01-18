@@ -1,0 +1,45 @@
+<div class="modal-content green-theme">
+  <h4>Editar Registro</h4>
+  <form #editForm="ngForm" (ngSubmit)="onSubmit()">
+    <label>
+      Nome Completo:
+      <input type="text" [(ngModel)]="row.fullName" name="fullName" required />
+    </label>
+    <label>
+      Documento:
+      <input type="text" [(ngModel)]="row.document" name="document" required />
+    </label>
+    <label>
+      Tipo de Documento:
+      <input
+        type="text"
+        [(ngModel)]="row.documentType"
+        name="documentType"
+        required
+      />
+    </label>
+    <label>
+      Código do Banco:
+      <input type="text" [(ngModel)]="row.bankCode" name="bankCode" required />
+    </label>
+    <label>
+      Agência do Banco:
+      <input
+        type="text"
+        [(ngModel)]="row.bankAgency"
+        name="bankAgency"
+        required
+      />
+    </label>
+    <label>
+      Número da Conta:
+      <input
+        type="text"
+        [(ngModel)]="row.accountNumber"
+        name="accountNumber"
+        required
+      />
+    </label>
+    <button type="submit">Salvar</button>
+  </form>
+</div>
