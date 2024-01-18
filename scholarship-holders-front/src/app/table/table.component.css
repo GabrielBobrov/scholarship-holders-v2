@@ -42,3 +42,22 @@ th {
   background-color: #4caf50;
   color: white;
 }
+.hide-data {
+  position: relative;
+}
+
+.hide-data::after {
+  content: "****";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 2;
+  pointer-events: none;
+}
+
+.hide-data:hover::after {
+  opacity: 0;
+}

@@ -12,8 +12,8 @@
   <tbody>
     <tr *ngFor="let row of data">
       <td>{{ row.fullName }}</td>
-      <td>{{ row.document }}</td>
       <td>{{ row.documentType }}</td>
+      <td class="hide-data">{{ row.document }}</td>
       <td>
         {{
           "Código do Banco: " +
@@ -24,7 +24,7 @@
             row.accountNumber
         }}
       </td>
-      <td>{{ row.createdAt }}</td>
+      <td>{{ row.createdAt | date : "dd/MM/yyyy" }}</td>
       <td>
         <button (click)="openModalUpdateScholar(row)">Editar</button>
         <button>Excluir</button>
