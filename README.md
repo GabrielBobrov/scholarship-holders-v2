@@ -1,4 +1,4 @@
-# Projeto Java com Angular
+# Projeto Bolsistas
 
 Este é um projeto de exemplo que demonstra a integração entre uma aplicação Java e uma aplicação Angular.
 
