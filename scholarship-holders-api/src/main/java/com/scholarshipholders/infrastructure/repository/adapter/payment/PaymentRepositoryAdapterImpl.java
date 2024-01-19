@@ -37,7 +37,7 @@ public class PaymentRepositoryAdapterImpl implements IPaymentRepositoryPort {
 
         PaymentEntity paymentEntity = PaymentEntity.builder()
                 .scholar(scholarEntity)
-                .paymentStatus(PaymentStatusEnum.REQUESTED)
+                .paymentStatus(PaymentStatusEnum.NOT_COMPLETED)
                 .paymentDate(createPaymentModel.getPaymentDate())
                 .amount(createPaymentModel.getAmount())
                 .build();
