@@ -17,15 +17,15 @@ export class UpdateScholarComponent {
     private scholarService: ScholarService
   ) {}
   row = new ScholarDTO();
-  originalData: any;
+  editedRow = JSON.parse(JSON.stringify(this.row));
 
   ngOnInit(): void {
     this.row = this.config.data.row;
-    this.originalData = this.row;
+    this.editedRow = JSON.parse(JSON.stringify(this.row));
   }
 
   onSubmit() {
-    this.scholarService.updateScholar(this.row).subscribe();
+    this.scholarService.updateScholar(this.editedRow).subscribe();
     this.closeModal();
   }
 
