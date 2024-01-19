@@ -1,16 +1,20 @@
 # Projeto Java com Angular
 Este é um projeto de exemplo que demonstra a integração entre uma aplicação Java e uma aplicação Angular.
-Pré-requisitos
+
+# Pré-requisitos
 Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 Java Development Kit (JDK) - versão 8 ou superior
 Node.js - versão 12 ou superior
-Angular CLI - versão 12 ou superior
-Configuração do Projeto Java
+Angular CLI - versão 14 ou superior
+
+# Configuração do Projeto Java
 Clone este repositório em sua máquina local.
 Abra o projeto Java em sua IDE de preferência.
+Execute o comano mvn clean, em seguida mvn compile para gerar os mappers.
 Certifique-se de ter as dependências do projeto instaladas corretamente.
 Execute o projeto Java para iniciar o servidor.
-Configuração do Projeto Angular
+
+# Configuração do Projeto Angular
 Navegue até a pasta frontend dentro do projeto clonado.
 Abra um terminal na pasta frontend.
 Execute o comando npm install para instalar as dependências do projeto.
