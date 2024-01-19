@@ -13,12 +13,20 @@ export class ScholarService {
 
   updateScholar(scholar: ScholarDTO) {
     console.log(scholar);
-    return this.http.put('http://localhost:8080/scholars', scholar);
+    return this.http.put('http://localhost:8080/scholars', scholar).pipe(
+      map((result) => {
+        return result;
+      })
+    );
   }
 
   createScholar(scholar: ScholarDTO) {
     console.log(scholar);
-    return this.http.post('http://localhost:8080/scholars', scholar);
+    return this.http.post('http://localhost:8080/scholars', scholar).pipe(
+      map((result) => {
+        return result;
+      })
+    );
   }
 
   deleteScholar(scholarId: any) {

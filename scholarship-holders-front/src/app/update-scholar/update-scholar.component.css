@@ -1,8 +1,8 @@
 .green-theme {
   background-color: #32de84; /* Tom verde */
   color: white; /* Texto branco para contraste */
-  padding: 20px;
-  border-radius: 10px;
+  padding: 50px;
+  margin-top: 0; /* Alinha o elemento ao topo da tela */
 }
 
 .green-theme h4 {
@@ -14,12 +14,11 @@
   margin-bottom: 10px;
 }
 
-.green-theme input[type="text"] {
+.green-theme input {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
   border: none;
-  border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -28,6 +27,5 @@
   background-color: #008000; /* Tom verde mais escuro */
   color: white; /* Texto branco para contraste */
   border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
