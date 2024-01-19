@@ -5,6 +5,7 @@ import com.scholarshipholders.core.model.GetScholarModel;
 import com.scholarshipholders.core.model.UpdateScholarModel;
 import com.scholarshipholders.dummy.ScholarDummy;
 import com.scholarshipholders.infrastructure.entity.ScholarEntity;
+import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
 import com.scholarshipholders.infrastructure.mapper.IScholarInfrastructureMapper;
 import com.scholarshipholders.infrastructure.repository.adapter.ISpringScholarRepositoryAdapter;
 import com.scholarshipholders.infrastructure.repository.adapter.ScholarRepositoryAdapterImpl;
@@ -17,6 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -49,6 +53,23 @@ class ScholarRepositoryAdapterImplTest {
         verify(springScholarRepository, times(1)).findById(id);
         verify(scholarInfrastructureMapper, times(1)).fromScholarEntityToGetScholarModel(scholarEntity);
         assertEquals(expectedModel, actualModel);
+    }
+
+    @Test
+    void testGetScholars() {
+        ScholarEntity scholarEntity = ScholarDummy.scholarEntityBuilder().build();
+        List<ScholarEntity> list = new ArrayList<>();
+        list.add(scholarEntity);
+
+        GetScholarModel getScholarModel = ScholarDummy.getScholarModelBuilder().build();
+
+        when(springScholarRepository.findAll()).thenReturn((list));
+        when(scholarInfrastructureMapper.fromScholarEntityToGetScholarModel(scholarEntity)).thenReturn(getScholarModel);
+
+        scholarRepositoryAdapter.getScholars();
+
+        verify(springScholarRepository, times(1)).findAll();
+        verify(scholarInfrastructureMapper, times(1)).fromScholarEntityToGetScholarModel(scholarEntity);
     }
 
     @Test
@@ -93,5 +114,18 @@ class ScholarRepositoryAdapterImplTest {
 
         verify(scholarInfrastructureMapper, times(1)).fromGetScholarModelTScholarEntity(getScholarModel);
         verify(springScholarRepository, times(1)).delete(scholarEntity);
+    }
+
+    @Test
+    void testExistsByDocumentAndDocumentType() {
+        String document = "document";
+        DocumentTypeEnum documentTypeEnum = DocumentTypeEnum.CPF;
+        ScholarEntity scholarEntity = ScholarDummy.scholarEntityBuilder().build();
+
+        when(springScholarRepository.findByDocumentAndDocumentType(document,documentTypeEnum)).thenReturn(Optional.ofNullable(scholarEntity));
+
+        scholarRepositoryAdapter.existsByDocumentAndDocumentType(document, documentTypeEnum);
+
+        verify(springScholarRepository, times(1)).findByDocumentAndDocumentType(document, documentTypeEnum);
     }
 }
