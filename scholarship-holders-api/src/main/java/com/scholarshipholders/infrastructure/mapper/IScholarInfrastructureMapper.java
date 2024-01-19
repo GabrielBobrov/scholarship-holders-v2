@@ -25,10 +25,6 @@ public interface IScholarInfrastructureMapper {
     ScholarEntity fromUpdateScholarModelToScholarEntity(UpdateScholarModel updateScholarModel);
 
     UpdateScholarModel fromScholarEntityToUpdateScholarModel(ScholarEntity scholarEntity);
-
-    @Named("map")
-    default LocalDate map(OffsetDateTime value) {
-        return value != null ? value.toLocalDate() : null;
-    }
+    
 
 }
