@@ -24,8 +24,8 @@ Siga estas etapas para configurar o projeto Java:
 
 Siga estas etapas para configurar o projeto Angular:
 
-1. Navegue até a pasta `frontend` dentro do projeto clonado.
-2. Abra um terminal na pasta `frontend`.
+1. Navegue até a pasta `scholarship-holders-front` dentro do projeto clonado.
+2. Abra um terminal na pasta `scholarship-holders-front`.
 3. Execute o comando `npm install` para instalar as dependências do projeto.
 4. Após a instalação, execute o comando `ng serve` para iniciar o servidor de desenvolvimento do Angular.
 
