@@ -1,10 +1,10 @@
 package com.scholarshipholders.core.ports.out.repository;
 
 
-import com.scholarshipholders.core.model.CreateScholarModel;
-import com.scholarshipholders.core.model.GetScholarModel;
-import com.scholarshipholders.core.model.UpdateScholarModel;
-import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
+import com.scholarshipholders.core.model.scholar.CreateScholarModel;
+import com.scholarshipholders.core.model.scholar.GetScholarModel;
+import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
+import com.scholarshipholders.infrastructure.entity.scholar.enums.DocumentTypeEnum;
 
 import java.util.List;
 import java.util.UUID;

@@ -2,9 +2,9 @@ package com.scholarshipholders.core.adapter.service;
 
 
 import com.scholarshipholders.core.exception.ScholarAlreadyExistsException;
-import com.scholarshipholders.core.model.CreateScholarModel;
-import com.scholarshipholders.core.model.GetScholarModel;
-import com.scholarshipholders.core.model.UpdateScholarModel;
+import com.scholarshipholders.core.model.scholar.CreateScholarModel;
+import com.scholarshipholders.core.model.scholar.GetScholarModel;
+import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
 import com.scholarshipholders.core.ports.in.service.IScholarServicePort;
 import com.scholarshipholders.core.ports.out.repository.IScholarRepositoryPort;
 import jakarta.transaction.Transactional;

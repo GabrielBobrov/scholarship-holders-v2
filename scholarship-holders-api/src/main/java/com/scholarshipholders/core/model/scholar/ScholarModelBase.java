@@ -1,6 +1,6 @@
-package com.scholarshipholders.core.model;
+package com.scholarshipholders.core.model.scholar;
 
-import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
+import com.scholarshipholders.infrastructure.entity.scholar.enums.DocumentTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,7 @@
-package com.scholarshipholders.infrastructure.entity;
+package com.scholarshipholders.infrastructure.entity.payment;
 
-import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
+import com.scholarshipholders.infrastructure.entity.payment.enums.PaymentStatusEnum;
+import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,6 +9,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,41 +19,37 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
 
-@Entity(name = "tb_scholar")
+@Entity(name = "tb_payment")
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScholarEntity {
+public class PaymentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "full_name")
-    private String fullName;
-
-    @Column(name = "document")
-    private String document;
-
-    @Column(name = "document_type")
+    @Column(name = "payment_status")
     @Enumerated(EnumType.STRING)
-    private DocumentTypeEnum documentType;
+    private PaymentStatusEnum paymentStatus;
 
-    @Column(name = "bank_code")
-    private Integer bankCode;
+    @ManyToOne
+    @JoinColumn(name = "scholar_id")
+    private ScholarEntity scholar;
 
-    @Column(name = "bank_agency")
-    private Integer bankAgency;
+    @Column(name = "amount")
+    private BigDecimal amount;
 
-    @Column(name = "account_number")
-    private Long accountNumber;
+    @Column(name = "payment_date")
+    private LocalDate paymentDate;
 
     @CreationTimestamp
     @Column(name = "created_at")
@@ -59,4 +58,5 @@ public class ScholarEntity {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
+
 }

@@ -1,13 +1,13 @@
-package com.scholarshipholders.infrastructure.repository.adapter;
+package com.scholarshipholders.infrastructure.repository.adapter.scholar;
 
 
 import com.scholarshipholders.core.exception.NotFoundException;
-import com.scholarshipholders.core.model.CreateScholarModel;
-import com.scholarshipholders.core.model.GetScholarModel;
-import com.scholarshipholders.core.model.UpdateScholarModel;
+import com.scholarshipholders.core.model.scholar.CreateScholarModel;
+import com.scholarshipholders.core.model.scholar.GetScholarModel;
+import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
 import com.scholarshipholders.core.ports.out.repository.IScholarRepositoryPort;
-import com.scholarshipholders.infrastructure.entity.ScholarEntity;
-import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
+import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
+import com.scholarshipholders.infrastructure.entity.scholar.enums.DocumentTypeEnum;
 import com.scholarshipholders.infrastructure.mapper.IScholarInfrastructureMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

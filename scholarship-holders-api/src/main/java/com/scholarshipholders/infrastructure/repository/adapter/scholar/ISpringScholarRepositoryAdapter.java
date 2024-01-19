@@ -1,7 +1,7 @@
-package com.scholarshipholders.infrastructure.repository.adapter;
+package com.scholarshipholders.infrastructure.repository.adapter.scholar;
 
-import com.scholarshipholders.infrastructure.entity.ScholarEntity;
-import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
+import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
+import com.scholarshipholders.infrastructure.entity.scholar.enums.DocumentTypeEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

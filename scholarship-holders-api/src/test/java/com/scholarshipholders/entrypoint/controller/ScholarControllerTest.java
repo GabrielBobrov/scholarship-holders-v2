@@ -1,13 +1,13 @@
 package com.scholarshipholders.entrypoint.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.scholarshipholders.core.model.CreateScholarModel;
-import com.scholarshipholders.core.model.GetScholarModel;
-import com.scholarshipholders.core.model.UpdateScholarModel;
+import com.scholarshipholders.core.model.scholar.CreateScholarModel;
+import com.scholarshipholders.core.model.scholar.GetScholarModel;
+import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
 import com.scholarshipholders.core.ports.in.service.IScholarServicePort;
 import com.scholarshipholders.dummy.ScholarDummy;
-import com.scholarshipholders.entrypoint.dto.request.CreateScholarRequestDTO;
-import com.scholarshipholders.entrypoint.dto.request.UpdateScholarRequestDTO;
+import com.scholarshipholders.entrypoint.dto.request.scholar.CreateScholarRequestDTO;
+import com.scholarshipholders.entrypoint.dto.request.scholar.UpdateScholarRequestDTO;
 import com.scholarshipholders.entrypoint.dto.response.GetScholarResponseDTO;
 import com.scholarshipholders.entrypoint.dto.response.UpdateScholarResponseDTO;
 import com.scholarshipholders.entrypoint.mapper.IScholarEntrypointMapper;

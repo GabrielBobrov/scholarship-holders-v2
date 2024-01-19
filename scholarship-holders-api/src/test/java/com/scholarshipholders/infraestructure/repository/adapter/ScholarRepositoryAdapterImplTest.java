@@ -1,22 +1,19 @@
 package com.scholarshipholders.infraestructure.repository.adapter;
 
-import com.scholarshipholders.core.model.CreateScholarModel;
-import com.scholarshipholders.core.model.GetScholarModel;
-import com.scholarshipholders.core.model.UpdateScholarModel;
+import com.scholarshipholders.core.model.scholar.CreateScholarModel;
+import com.scholarshipholders.core.model.scholar.GetScholarModel;
+import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
 import com.scholarshipholders.dummy.ScholarDummy;
-import com.scholarshipholders.infrastructure.entity.ScholarEntity;
-import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
+import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
+import com.scholarshipholders.infrastructure.entity.scholar.enums.DocumentTypeEnum;
 import com.scholarshipholders.infrastructure.mapper.IScholarInfrastructureMapper;
-import com.scholarshipholders.infrastructure.repository.adapter.ISpringScholarRepositoryAdapter;
-import com.scholarshipholders.infrastructure.repository.adapter.ScholarRepositoryAdapterImpl;
+import com.scholarshipholders.infrastructure.repository.adapter.scholar.ISpringScholarRepositoryAdapter;
+import com.scholarshipholders.infrastructure.repository.adapter.scholar.ScholarRepositoryAdapterImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.ArrayList;
 import java.util.List;

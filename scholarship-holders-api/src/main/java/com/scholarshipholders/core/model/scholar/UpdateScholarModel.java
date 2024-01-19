@@ -1,12 +1,10 @@
-package com.scholarshipholders.core.model;
+package com.scholarshipholders.core.model.scholar;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Getter

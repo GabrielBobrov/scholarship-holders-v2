@@ -1,4 +1,4 @@
-package com.scholarshipholders.core.model;
+package com.scholarshipholders.core.model.scholar;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,9 @@ import java.util.UUID;
 @Getter
 @Setter
 @SuperBuilder(toBuilder = true)
-public class CreateScholarModel extends ScholarModelBase {
+public class GetScholarModel extends ScholarModelBase {
 
+    private UUID id;
+    private LocalDate createdAt;
 
 }

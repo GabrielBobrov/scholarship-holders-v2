@@ -1,17 +1,12 @@
 package com.scholarshipholders.infrastructure.mapper;
 
 
-import com.scholarshipholders.core.model.CreateScholarModel;
-import com.scholarshipholders.core.model.GetScholarModel;
-import com.scholarshipholders.core.model.UpdateScholarModel;
-import com.scholarshipholders.infrastructure.entity.ScholarEntity;
+import com.scholarshipholders.core.model.scholar.CreateScholarModel;
+import com.scholarshipholders.core.model.scholar.GetScholarModel;
+import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
+import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
-
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IScholarInfrastructureMapper {
