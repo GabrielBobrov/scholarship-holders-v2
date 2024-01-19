@@ -5,8 +5,8 @@ import com.scholarshipholders.core.model.scholar.GetScholarModel;
 import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
 import com.scholarshipholders.entrypoint.dto.request.scholar.CreateScholarRequestDTO;
 import com.scholarshipholders.entrypoint.dto.request.scholar.UpdateScholarRequestDTO;
-import com.scholarshipholders.entrypoint.dto.response.GetScholarResponseDTO;
-import com.scholarshipholders.entrypoint.dto.response.UpdateScholarResponseDTO;
+import com.scholarshipholders.entrypoint.dto.response.scholar.GetScholarResponseDTO;
+import com.scholarshipholders.entrypoint.dto.response.scholar.UpdateScholarResponseDTO;
 import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
 import com.scholarshipholders.infrastructure.entity.scholar.enums.DocumentTypeEnum;
 

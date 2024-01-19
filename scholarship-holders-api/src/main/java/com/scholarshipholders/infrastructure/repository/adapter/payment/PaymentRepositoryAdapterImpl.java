@@ -3,17 +3,12 @@ package com.scholarshipholders.infrastructure.repository.adapter.payment;
 
 import com.scholarshipholders.core.exception.NotFoundException;
 import com.scholarshipholders.core.model.payment.CreatePaymentModel;
-import com.scholarshipholders.core.model.scholar.CreateScholarModel;
-import com.scholarshipholders.core.model.scholar.GetScholarModel;
-import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
+import com.scholarshipholders.core.model.payment.GetPaymentModel;
 import com.scholarshipholders.core.ports.out.repository.IPaymentRepositoryPort;
-import com.scholarshipholders.core.ports.out.repository.IScholarRepositoryPort;
 import com.scholarshipholders.infrastructure.entity.payment.PaymentEntity;
 import com.scholarshipholders.infrastructure.entity.payment.enums.PaymentStatusEnum;
 import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
-import com.scholarshipholders.infrastructure.entity.scholar.enums.DocumentTypeEnum;
 import com.scholarshipholders.infrastructure.mapper.IPaymentInfrastructureMapper;
-import com.scholarshipholders.infrastructure.mapper.IScholarInfrastructureMapper;
 import com.scholarshipholders.infrastructure.repository.adapter.scholar.ISpringScholarRepositoryAdapter;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,9 +33,7 @@ public class PaymentRepositoryAdapterImpl implements IPaymentRepositoryPort {
     public void createPayment(CreatePaymentModel createPaymentModel) {
         log.info("Class {} method createPayment", this.getClass().getName());
 
-        ScholarEntity scholarEntity = springScholarRepositoryAdapter.findById(createPaymentModel.getScholarId())
-                .orElseThrow(() -> new NotFoundException("Bolsista não encontrado"));
-        log.info("ScholarEntity {}", scholarEntity);
+        ScholarEntity scholarEntity = getScholarEntity(createPaymentModel.getScholarId());
 
         PaymentEntity paymentEntity = PaymentEntity.builder()
                 .scholar(scholarEntity)
@@ -53,5 +46,28 @@ public class PaymentRepositoryAdapterImpl implements IPaymentRepositoryPort {
 
         PaymentEntity payment = springPaymentRepositoryAdapter.save(paymentEntity);
         log.info("PaymentEntity created {}", payment);
+    }
+
+    @Override
+    public List<GetPaymentModel> getPayments(UUID scholarId) {
+        log.info("Class {} method getPayments", this.getClass().getName());
+
+        ScholarEntity scholarEntity = getScholarEntity(scholarId);
+
+        List<PaymentEntity> paymentEntities = springPaymentRepositoryAdapter.findByScholar(scholarEntity);
+
+        List<GetPaymentModel> paymentModels = paymentEntities.stream()
+                .map(paymentEntity -> paymentInfrastructureMapper.toGetPaymentModel(paymentEntity, scholarEntity))
+                .collect(Collectors.toList());
+        log.info("List<GetPaymentModel> {}", paymentModels);
+
+        return paymentModels;
+    }
+
+    private ScholarEntity getScholarEntity(UUID scholarId) {
+        ScholarEntity scholarEntity = springScholarRepositoryAdapter.findById(scholarId)
+                .orElseThrow(() -> new NotFoundException("Bolsista não encontrado"));
+        log.info("ScholarEntity {}", scholarEntity);
+        return scholarEntity;
     }
 }

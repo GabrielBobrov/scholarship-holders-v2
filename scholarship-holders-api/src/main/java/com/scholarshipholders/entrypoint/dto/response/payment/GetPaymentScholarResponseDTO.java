@@ -1,4 +1,4 @@
-package com.scholarshipholders.entrypoint.dto.response;
+package com.scholarshipholders.entrypoint.dto.response.payment;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -18,15 +18,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.LowerCamelCaseStrategy.class)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class GetScholarResponseDTO {
-
-
-    private UUID id;
-    private String fullName;
-    private String document;
-    private DocumentTypeEnum documentType;
+public class GetPaymentScholarResponseDTO {
     private Integer bankCode;
     private Integer bankAgency;
     private Long accountNumber;
-    private LocalDate createdAt;
 }

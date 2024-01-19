@@ -6,8 +6,8 @@ import com.scholarshipholders.core.model.scholar.GetScholarModel;
 import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
 import com.scholarshipholders.entrypoint.dto.request.scholar.CreateScholarRequestDTO;
 import com.scholarshipholders.entrypoint.dto.request.scholar.UpdateScholarRequestDTO;
-import com.scholarshipholders.entrypoint.dto.response.GetScholarResponseDTO;
-import com.scholarshipholders.entrypoint.dto.response.UpdateScholarResponseDTO;
+import com.scholarshipholders.entrypoint.dto.response.scholar.GetScholarResponseDTO;
+import com.scholarshipholders.entrypoint.dto.response.scholar.UpdateScholarResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

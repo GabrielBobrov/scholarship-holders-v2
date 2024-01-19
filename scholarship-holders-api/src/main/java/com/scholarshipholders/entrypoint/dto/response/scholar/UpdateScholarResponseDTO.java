@@ -1,4 +1,4 @@
-package com.scholarshipholders.entrypoint.dto.response;
+package com.scholarshipholders.entrypoint.dto.response.scholar;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;

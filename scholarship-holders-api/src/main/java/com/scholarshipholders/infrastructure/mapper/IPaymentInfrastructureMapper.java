@@ -1,6 +1,7 @@
 package com.scholarshipholders.infrastructure.mapper;
 
 
+import com.scholarshipholders.core.model.payment.GetPaymentModel;
 import com.scholarshipholders.core.model.scholar.CreateScholarModel;
 import com.scholarshipholders.core.model.scholar.GetScholarModel;
 import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
@@ -14,7 +15,7 @@ import org.mapstruct.ReportingPolicy;
 public interface IPaymentInfrastructureMapper {
 
     @Mapping(target = "scholar", source = "scholar")
-    PaymentEntity toPaymentEntity(CreateScholarModel createScholarModel, ScholarEntity scholar);
+    GetPaymentModel toGetPaymentModel(PaymentEntity paymentEntity, ScholarEntity scholar);
 
 
 
