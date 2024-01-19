@@ -9,6 +9,10 @@ import com.scholarshipholders.infrastructure.mapper.IScholarInfrastructureMapper
 import com.scholarshipholders.infrastructure.repository.adapter.ISpringScholarRepositoryAdapter;
 import com.scholarshipholders.infrastructure.repository.adapter.ScholarRepositoryAdapterImpl;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -19,16 +23,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class ScholarRepositoryAdapterImplTest {
 
-    @MockBean
+    @Mock
     private ISpringScholarRepositoryAdapter springScholarRepository;
 
-    @MockBean
+    @Mock
     private IScholarInfrastructureMapper scholarInfrastructureMapper;
 
-    @Autowired
+    @InjectMocks
     private ScholarRepositoryAdapterImpl scholarRepositoryAdapter;
 
     @Test
