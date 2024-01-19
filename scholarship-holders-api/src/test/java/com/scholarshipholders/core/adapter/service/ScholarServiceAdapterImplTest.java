@@ -1,10 +1,12 @@
 package com.scholarshipholders.core.adapter.service;
 
+import com.scholarshipholders.core.exception.ScholarAlreadyExistsException;
 import com.scholarshipholders.core.model.CreateScholarModel;
 import com.scholarshipholders.core.model.GetScholarModel;
 import com.scholarshipholders.core.model.UpdateScholarModel;
 import com.scholarshipholders.core.ports.out.repository.IScholarRepositoryPort;
 import com.scholarshipholders.dummy.ScholarDummy;
+import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,6 +22,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -95,5 +98,33 @@ class ScholarServiceAdapterImplTest {
 
         verify(scholarRepositoryPort, times(1)).getScholar(id);
         verify(scholarRepositoryPort, times(1)).deleteScholar(scholar);
+    }
+
+    @Test
+    void testCreateScholar_ThrowsScholarAlreadyExistsException() {
+        CreateScholarModel createScholarModel = ScholarDummy.createScholarModelBuilder().build();
+        createScholarModel.setDocument("123456789");
+        createScholarModel.setDocumentType(DocumentTypeEnum.CPF);
+
+        when(scholarRepositoryPort.existsByDocumentAndDocumentType(createScholarModel.getDocument(), createScholarModel.getDocumentType())).thenReturn(true);
+
+        assertThrows(ScholarAlreadyExistsException.class, () -> scholarServiceAdapter.createScholar(createScholarModel));
+
+        verify(scholarRepositoryPort, times(1)).existsByDocumentAndDocumentType(createScholarModel.getDocument(), createScholarModel.getDocumentType());
+        verify(scholarRepositoryPort, never()).createScholar(createScholarModel);
+    }
+
+    @Test
+    void testUpdateScholar_ThrowsScholarAlreadyExistsException() {
+        UpdateScholarModel updateScholarModel = ScholarDummy.updateScholarModelBuilder().build();
+        updateScholarModel.setDocument("123456789");
+        updateScholarModel.setDocumentType(DocumentTypeEnum.CPF);
+
+        when(scholarRepositoryPort.existsByDocumentAndDocumentType(updateScholarModel.getDocument(), updateScholarModel.getDocumentType())).thenReturn(true);
+
+        assertThrows(ScholarAlreadyExistsException.class, () -> scholarServiceAdapter.updateScholar(updateScholarModel));
+
+        verify(scholarRepositoryPort, times(1)).existsByDocumentAndDocumentType(updateScholarModel.getDocument(), updateScholarModel.getDocumentType());
+        verify(scholarRepositoryPort, never()).updateScholar(updateScholarModel);
     }
 }

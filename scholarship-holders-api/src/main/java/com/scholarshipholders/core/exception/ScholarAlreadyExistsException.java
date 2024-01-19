@@ -1,8 +1,8 @@
-package com.ms.account.core.exception;
+package com.scholarshipholders.core.exception;
 
-public class AccountAlreadyExistsException extends RuntimeException {
-                                                              
-    public AccountAlreadyExistsException(String value) {
+public class ScholarAlreadyExistsException extends RuntimeException {
+
+    public ScholarAlreadyExistsException(String value) {
         super(value);
     }
 }

@@ -7,6 +7,7 @@ import com.scholarshipholders.core.model.GetScholarModel;
 import com.scholarshipholders.core.model.UpdateScholarModel;
 import com.scholarshipholders.core.ports.out.repository.IScholarRepositoryPort;
 import com.scholarshipholders.infrastructure.entity.ScholarEntity;
+import com.scholarshipholders.infrastructure.entity.enums.DocumentTypeEnum;
 import com.scholarshipholders.infrastructure.mapper.IScholarInfrastructureMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -89,6 +90,13 @@ public class ScholarRepositoryAdapterImpl implements IScholarRepositoryPort {
 
         springScholarRepository.delete(scholarEntity);
 
+    }
+
+    @Override
+    public Boolean existsByDocumentAndDocumentType(String document, DocumentTypeEnum documentType) {
+        log.info("Class {} method existsByDocumentAndDocumentType", this.getClass().getName());
+
+        return springScholarRepository.findByDocumentAndDocumentType(document, documentType).isPresent();
     }
 
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonMappingException.Reference;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.PropertyBindingException;
 import com.scholarshipholders.core.exception.NotFoundException;
+import com.scholarshipholders.core.exception.ScholarAlreadyExistsException;
 import com.scholarshipholders.entrypoint.exception.model.Problem;
 import com.scholarshipholders.entrypoint.exception.model.enums.ProblemType;
 import lombok.extern.slf4j.Slf4j;
@@ -47,6 +48,20 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	public GlobalExceptionHandler(MessageSource messageSource) {
 		this.messageSource = messageSource;
+	}
+
+	@ExceptionHandler({ScholarAlreadyExistsException.class})
+	public ResponseEntity<Object> handleScholarAlreadyExistsException(RuntimeException ex, WebRequest request) {
+
+		HttpStatus status = HttpStatus.CONFLICT;
+		ProblemType problemType = ProblemType.BUSINESS_ERROR;
+		String detail = ex.getMessage();
+
+		Problem problem = createProblemBuilder(status, problemType, detail)
+				.userMessage(detail)
+				.build();
+
+		return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
 	}
 
 	@ExceptionHandler({NotFoundException.class})

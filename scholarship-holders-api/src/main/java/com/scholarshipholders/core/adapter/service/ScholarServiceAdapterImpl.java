@@ -1,6 +1,7 @@
 package com.scholarshipholders.core.adapter.service;
 
 
+import com.scholarshipholders.core.exception.ScholarAlreadyExistsException;
 import com.scholarshipholders.core.model.CreateScholarModel;
 import com.scholarshipholders.core.model.GetScholarModel;
 import com.scholarshipholders.core.model.UpdateScholarModel;
@@ -41,6 +42,11 @@ public class ScholarServiceAdapterImpl implements IScholarServicePort {
     public void createScholar(CreateScholarModel createScholarModel) {
         log.info("Class {} method createScholar", this.getClass().getName());
 
+        Boolean alreadyExists = scholarRepositoryPort.existsByDocumentAndDocumentType(createScholarModel.getDocument(), createScholarModel.getDocumentType());
+
+        if (Boolean.TRUE.equals(alreadyExists))
+            throw new ScholarAlreadyExistsException(String.format("Um bolsista com o documento %s e do tipo %s já foi registrado.", createScholarModel.getDocument(), createScholarModel.getDocumentType()));
+
         scholarRepositoryPort.createScholar(createScholarModel);
 
     }
@@ -48,6 +54,12 @@ public class ScholarServiceAdapterImpl implements IScholarServicePort {
     @Override
     public UpdateScholarModel updateScholar(UpdateScholarModel updateScholarModel) {
         log.info("Class {} method updateScholar", this.getClass().getName());
+
+        Boolean alreadyExists = scholarRepositoryPort.existsByDocumentAndDocumentType(updateScholarModel.getDocument(), updateScholarModel.getDocumentType());
+
+        if (Boolean.TRUE.equals(alreadyExists))
+            throw new ScholarAlreadyExistsException(String.format("Um bolsista com o documento %s e do tipo %s já foi registrado.", updateScholarModel.getDocument(), updateScholarModel.getDocumentType()));
+
         GetScholarModel scholar = scholarRepositoryPort.getScholar(updateScholarModel.getId());
         updateScholarModel.setCreatedAt(scholar.getCreatedAt());
 
