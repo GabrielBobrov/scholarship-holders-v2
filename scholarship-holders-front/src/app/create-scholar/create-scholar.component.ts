@@ -14,7 +14,14 @@ export class CreateScholarComponent {
   constructor(public router: Router, private scholarService: ScholarService) {}
 
   onSubmit() {
-    this.scholarService.createScholar(this.row).subscribe();
+    this.scholarService.createScholar(this.row).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
     this.closeModal();
   }
 

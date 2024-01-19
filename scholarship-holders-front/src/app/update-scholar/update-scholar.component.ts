@@ -25,7 +25,14 @@ export class UpdateScholarComponent {
   }
 
   onSubmit() {
-    this.scholarService.updateScholar(this.editedRow).subscribe();
+    this.scholarService.updateScholar(this.editedRow).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
     this.closeModal();
   }
 
