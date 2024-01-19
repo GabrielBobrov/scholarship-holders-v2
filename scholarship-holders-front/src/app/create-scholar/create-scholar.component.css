@@ -2,7 +2,7 @@
   background-color: #f8f9fa; /* Tom de cinza claro */
   color: #6c757d; /* Cor de texto escura */
   border: 1px solid #dee2e6; /* Borda cinza */
-  padding: 20px; /* Espaçamento interno */
+  padding: 30px; /* Espaçamento interno */
   border-radius: 5px; /* Cantos arredondados */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
@@ -16,8 +16,15 @@
   background-color: #6c757d; /* Cor de fundo azul */
   color: #fff; /* Cor de texto branca */
   border: none; /* Sem borda */
+  margin-top: 5px;
 }
 
 .custom-form button:hover {
   background-color: #5a6268; /* Cor de fundo azul mais escuro quando passar o mouse */
+}
+
+.float-right {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

@@ -11,7 +11,7 @@
         <label for="fullName">Nome Completo:</label>
         <input
           type="text"
-          [(ngModel)]="row.fullName"
+          [(ngModel)]="editedRow.fullName"
           name="fullName"
           id="fullName"
           class="form-control"
@@ -22,7 +22,7 @@
         <label for="document">Documento:</label>
         <input
           type="number"
-          [(ngModel)]="row.document"
+          [(ngModel)]="editedRow.document"
           name="document"
           id="document"
           class="form-control"
@@ -31,20 +31,23 @@
       </div>
       <div class="form-group mb-3">
         <label for="documentType">Tipo de Documento:</label>
-        <input
-          type="text"
-          [(ngModel)]="row.documentType"
+        <select
+          [(ngModel)]="editedRow.documentType"
           name="documentType"
           id="documentType"
           class="form-control"
           required
-        />
+        >
+          <option value="CPF">CPF</option>
+          <option value="CNH">CNH</option>
+          <option value="PASSPORT">Passaporte</option>
+        </select>
       </div>
       <div class="form-group mb-3">
         <label for="bankCode">Código do Banco:</label>
         <input
           type="text"
-          [(ngModel)]="row.bankCode"
+          [(ngModel)]="editedRow.bankCode"
           name="bankCode"
           id="bankCode"
           class="form-control"
@@ -55,7 +58,7 @@
         <label for="bankAgency">Agência do Banco:</label>
         <input
           type="text"
-          [(ngModel)]="row.bankAgency"
+          [(ngModel)]="editedRow.bankAgency"
           name="bankAgency"
           id="bankAgency"
           class="form-control"
@@ -66,7 +69,7 @@
         <label for="accountNumber">Número da Conta:</label>
         <input
           type="text"
-          [(ngModel)]="row.accountNumber"
+          [(ngModel)]="editedRow.accountNumber"
           name="accountNumber"
           id="accountNumber"
           class="form-control"

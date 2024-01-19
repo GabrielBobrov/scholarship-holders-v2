@@ -10,6 +10,8 @@ import { UpdateScholarComponent } from '../update-scholar/update-scholar.compone
 })
 export class TableComponent implements OnInit {
   data: any;
+  dataService: any;
+  originalDocuments: any;
 
   constructor(
     private scholarService: ScholarService,
@@ -33,5 +35,9 @@ export class TableComponent implements OnInit {
     console.log(row);
     this.scholarService.deleteScholar(row.id);
     window.location.reload();
+  }
+
+  hideDocument(row: any) {
+    row.hideDocument = !row.hideDocument;
   }
 }

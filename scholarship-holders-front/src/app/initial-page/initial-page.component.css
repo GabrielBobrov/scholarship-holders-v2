@@ -1,3 +1,20 @@
 .align-right {
   float: right;
+  margin-top: 15%;
+  margin-right: 5%;
+}
+h1 {
+  text-align: center;
+}
+nav {
+  background-color: #f0f0f0; /* Cor de fundo cinza claro */
+  padding: 1rem 0; /* Espaço interno */
+  text-align: center; /* Centraliza o título */
+  font-family: "Arial", sans-serif; /* Fonte minimalista */
+}
+
+nav h1 {
+  margin: 0; /* Remove a margem padrão do h1 */
+  font-size: 2rem; /* Tamanho da fonte grande */
+  color: #333; /* Cor do texto cinza escuro */
 }

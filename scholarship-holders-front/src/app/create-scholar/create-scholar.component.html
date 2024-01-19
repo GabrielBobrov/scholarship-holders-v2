@@ -28,16 +28,19 @@
       />
       <div class="invalid-feedback">Por favor, preencha este campo.</div>
     </div>
-    <div class="form-group">
-      <label>Tipo de Documento:</label>
-      <input
-        type="text"
+    <div class="form-group mb-3">
+      <label for="documentType">Tipo de Documento:</label>
+      <select
         [(ngModel)]="row.documentType"
         name="documentType"
+        id="documentType"
         class="form-control"
         required
-      />
-      <div class="invalid-feedback">Por favor, preencha este campo.</div>
+      >
+        <option value="CPF">CPF</option>
+        <option value="CNH">CNH</option>
+        <option value="PASSPORT">Passaporte</option>
+      </select>
     </div>
     <div class="form-group">
       <label>Código do Banco:</label>
