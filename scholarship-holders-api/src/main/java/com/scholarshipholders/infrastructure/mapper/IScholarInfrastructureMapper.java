@@ -16,10 +16,8 @@ import java.time.OffsetDateTime;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IScholarInfrastructureMapper {
 
-    @Mapping(source = "createdAt", target = "createdAt", qualifiedByName = "map")
     GetScholarModel fromScholarEntityToGetScholarModel(ScholarEntity scholarEntity);
 
-    @Mapping(source = "createdAt", target = "createdAt", ignore = true)
     ScholarEntity fromGetScholarModelTScholarEntity(GetScholarModel getScholarModel);
 
     ScholarEntity fromCreateScholarModelToScholarEntity(CreateScholarModel createScholarModel);

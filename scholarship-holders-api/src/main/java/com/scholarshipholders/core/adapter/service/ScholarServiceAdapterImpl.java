@@ -48,6 +48,8 @@ public class ScholarServiceAdapterImpl implements IScholarServicePort {
     @Override
     public UpdateScholarModel updateScholar(UpdateScholarModel updateScholarModel) {
         log.info("Class {} method updateScholar", this.getClass().getName());
+        GetScholarModel scholar = scholarRepositoryPort.getScholar(updateScholarModel.getId());
+        updateScholarModel.setCreatedAt(scholar.getCreatedAt());
 
         return scholarRepositoryPort.updateScholar(updateScholarModel);
     }
