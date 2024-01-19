@@ -1,12 +1,12 @@
-<table>
+<table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>Nome completo</th>
-      <th>Tipo do documento</th>
-      <th>Documento</th>
-      <th>Dados Bancários</th>
-      <th>Criado em</th>
-      <th>Ações</th>
+      <th scope="col">Nome completo</th>
+      <th scope="col">Tipo do documento</th>
+      <th scope="col">Documento</th>
+      <th scope="col">Dados Bancários</th>
+      <th scope="col">Criado em</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -26,8 +26,12 @@
       </td>
       <td>{{ row.createdAt | date : "dd/MM/yyyy" }}</td>
       <td>
-        <button (click)="openModalUpdateScholar(row)">Editar</button>
-        <button (click)="deleteScholar(row)">Excluir</button>
+        <button class="btn btn-primary" (click)="openModalUpdateScholar(row)">
+          Editar
+        </button>
+        <button class="btn btn-danger" (click)="deleteScholar(row)">
+          Excluir
+        </button>
       </td>
     </tr>
   </tbody>

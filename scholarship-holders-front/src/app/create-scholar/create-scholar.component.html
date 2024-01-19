@@ -1,50 +1,77 @@
-<div class="modal-content green-theme">
+<div class="modal-content green-theme custom-form">
   <h4>Criar Novo Registro</h4>
-  <form #createForm="ngForm" (ngSubmit)="onSubmit()">
-    <label>
-      Nome Completo:
-      <input type="text" [(ngModel)]="row.fullName" name="fullName" required />
-    </label>
-    <label>
-      Documento:
+  <form
+    #createForm="ngForm"
+    (ngSubmit)="onSubmit()"
+    class="needs-validation"
+    novalidate
+  >
+    <div class="form-group">
+      <label>Nome Completo:</label>
+      <input
+        type="text"
+        [(ngModel)]="row.fullName"
+        name="fullName"
+        class="form-control"
+        required
+      />
+      <div class="invalid-feedback">Por favor, preencha este campo.</div>
+    </div>
+    <div class="form-group">
+      <label>Documento:</label>
       <input
         type="number"
         [(ngModel)]="row.document"
         name="document"
+        class="form-control"
         required
       />
-    </label>
-    <label>
-      Tipo de Documento:
+      <div class="invalid-feedback">Por favor, preencha este campo.</div>
+    </div>
+    <div class="form-group">
+      <label>Tipo de Documento:</label>
       <input
         type="text"
         [(ngModel)]="row.documentType"
         name="documentType"
+        class="form-control"
         required
       />
-    </label>
-    <label>
-      Código do Banco:
-      <input type="text" [(ngModel)]="row.bankCode" name="bankCode" required />
-    </label>
-    <label>
-      Agência do Banco:
+      <div class="invalid-feedback">Por favor, preencha este campo.</div>
+    </div>
+    <div class="form-group">
+      <label>Código do Banco:</label>
+      <input
+        type="text"
+        [(ngModel)]="row.bankCode"
+        name="bankCode"
+        class="form-control"
+        required
+      />
+      <div class="invalid-feedback">Por favor, preencha este campo.</div>
+    </div>
+    <div class="form-group">
+      <label>Agência do Banco:</label>
       <input
         type="text"
         [(ngModel)]="row.bankAgency"
         name="bankAgency"
+        class="form-control"
         required
       />
-    </label>
-    <label>
-      Número da Conta:
+      <div class="invalid-feedback">Por favor, preencha este campo.</div>
+    </div>
+    <div class="form-group">
+      <label>Número da Conta:</label>
       <input
         type="text"
         [(ngModel)]="row.accountNumber"
         name="accountNumber"
+        class="form-control"
         required
       />
-    </label>
-    <button type="submit">Salvar</button>
+      <div class="invalid-feedback">Por favor, preencha este campo.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
   </form>
 </div>
