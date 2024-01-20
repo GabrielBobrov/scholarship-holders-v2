@@ -25,18 +25,15 @@ export class UpdateScholarComponent {
   }
 
   onSubmit() {
-    this.scholarService.updateScholar(this.editedRow).subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+    this.scholarService.updateScholar(this.editedRow).subscribe((response) => {
+      console.log(response);
+    });
     this.closeModal();
   }
 
   closeModal() {
-    window.location.reload();
+    this.router.navigate(['/initial']).then(() => {
+      window.location.href = '/initial';
+    });
   }
 }

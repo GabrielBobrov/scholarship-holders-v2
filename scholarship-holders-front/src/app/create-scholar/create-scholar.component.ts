@@ -26,6 +26,8 @@ export class CreateScholarComponent {
   }
 
   closeModal() {
-    window.location.reload();
+    this.router.navigate(['/initial']).then(() => {
+      window.location.href = '/initial';
+    });
   }
 }
