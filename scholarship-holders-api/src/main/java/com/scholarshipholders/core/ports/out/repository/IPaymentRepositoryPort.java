@@ -3,7 +3,9 @@ package com.scholarshipholders.core.ports.out.repository;
 
 import com.scholarshipholders.core.model.payment.CreatePaymentModel;
 import com.scholarshipholders.core.model.payment.GetPaymentModel;
-import com.scholarshipholders.core.model.payment.UpdatePaymentModel;
+import com.scholarshipholders.infrastructure.entity.payment.PaymentEntity;
+import com.scholarshipholders.infrastructure.entity.payment.enums.PaymentStatusEnum;
+import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,9 +16,11 @@ public interface IPaymentRepositoryPort {
 
     List<GetPaymentModel> getPayments(UUID scholarId);
 
-    GetPaymentModel getPayment(UUID paymentId);
+    PaymentEntity findPaymentEntity(UUID paymentId, ScholarEntity scholarEntity);
 
-    void updatePaymentStatus(UpdatePaymentModel updatePaymentModel);
+    ScholarEntity getScholarEntity(UUID scholarId);
+
+    void updatePaymentStatus(PaymentEntity paymentEntity, PaymentStatusEnum newStatus);
 
 
 }

@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -67,37 +68,22 @@ public class PaymentRepositoryAdapterImpl implements IPaymentRepositoryPort {
     }
 
     @Override
-    public GetPaymentModel getPayment(UUID paymentId) {
-        log.info("Class {} method getPayment", this.getClass().getName());
-
-        PaymentEntity paymentEntity = springPaymentRepositoryAdapter.findById(paymentId)
-                .orElseThrow(() -> new NotFoundException("Pagamento não encontrado"));
-        return paymentInfrastructureMapper.toGetPaymentModel(paymentEntity);
+    public PaymentEntity findPaymentEntity(UUID paymentId, ScholarEntity scholarEntity) {
+        Optional<PaymentEntity> paymentEntity = springPaymentRepositoryAdapter.findByIdAndScholar(paymentId, scholarEntity);
+        return paymentEntity.orElseThrow(() -> new NotFoundException("Pagamento não encontrado"));
     }
 
     @Override
-    public void updatePaymentStatus(UpdatePaymentModel updatePaymentModel) {
-        log.info("Class {} method updatePaymentStatus", this.getClass().getName());
-
-        PaymentEntity paymentEntity = springPaymentRepositoryAdapter.findById(updatePaymentModel.getId())
-                .orElseThrow(() -> new NotFoundException("Pagamento não encontrado"));
-
-        if (!paymentEntity.hasValidFutureStatus(updatePaymentModel.getPaymentStatus())) {
-            throw new BusinessException(
-                    String.format("Pagamento %s não pode ser alterado de %s para %s",
-                            updatePaymentModel.getId(),
-                            paymentEntity.getPaymentStatus().name(),
-                            updatePaymentModel.getPaymentStatus().name()));
-        }
-
-        paymentEntity.setPaymentStatus(updatePaymentModel.getPaymentStatus());
-        springPaymentRepositoryAdapter.save(paymentEntity);
-    }
-
-    private ScholarEntity getScholarEntity(UUID scholarId) {
+    public ScholarEntity getScholarEntity(UUID scholarId) {
         ScholarEntity scholarEntity = springScholarRepositoryAdapter.findById(scholarId)
                 .orElseThrow(() -> new NotFoundException("Bolsista não encontrado"));
         log.info("ScholarEntity {}", scholarEntity);
         return scholarEntity;
+    }
+
+    @Override
+    public void updatePaymentStatus(PaymentEntity paymentEntity, PaymentStatusEnum newStatus) {
+        paymentEntity.setPaymentStatus(newStatus);
+        springPaymentRepositoryAdapter.save(paymentEntity);
     }
 }

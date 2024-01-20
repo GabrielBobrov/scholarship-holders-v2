@@ -13,6 +13,7 @@ import java.util.UUID;
 public class UpdatePaymentModel {
 
     private UUID id;
+    private UUID scholarId;
     private PaymentStatusEnum paymentStatus;
 
 
