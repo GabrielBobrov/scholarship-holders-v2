@@ -15,7 +15,10 @@ import org.mapstruct.ReportingPolicy;
 public interface IPaymentInfrastructureMapper {
 
     @Mapping(target = "scholar", source = "scholar")
+    @Mapping(target = "id", source = "paymentEntity.id")
     GetPaymentModel toGetPaymentModel(PaymentEntity paymentEntity, ScholarEntity scholar);
+
+    GetPaymentModel toGetPaymentModel(PaymentEntity paymentEntity);
 
 
 

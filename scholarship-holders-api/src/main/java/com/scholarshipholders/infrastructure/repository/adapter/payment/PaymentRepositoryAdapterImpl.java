@@ -1,9 +1,11 @@
 package com.scholarshipholders.infrastructure.repository.adapter.payment;
 
 
+import com.scholarshipholders.core.exception.BusinessException;
 import com.scholarshipholders.core.exception.NotFoundException;
 import com.scholarshipholders.core.model.payment.CreatePaymentModel;
 import com.scholarshipholders.core.model.payment.GetPaymentModel;
+import com.scholarshipholders.core.model.payment.UpdatePaymentModel;
 import com.scholarshipholders.core.ports.out.repository.IPaymentRepositoryPort;
 import com.scholarshipholders.infrastructure.entity.payment.PaymentEntity;
 import com.scholarshipholders.infrastructure.entity.payment.enums.PaymentStatusEnum;
@@ -62,6 +64,24 @@ public class PaymentRepositoryAdapterImpl implements IPaymentRepositoryPort {
         log.info("List<GetPaymentModel> {}", paymentModels);
 
         return paymentModels;
+    }
+
+    @Override
+    public GetPaymentModel getPayment(UUID paymentId) {
+        log.info("Class {} method getPayment", this.getClass().getName());
+
+        PaymentEntity paymentEntity = springPaymentRepositoryAdapter.findById(paymentId)
+                .orElseThrow(() -> new NotFoundException("Pagamento não encontrado"));
+        return paymentInfrastructureMapper.toGetPaymentModel(paymentEntity);
+    }
+
+    @Override
+    public void updatePaymentStatus(UpdatePaymentModel updatePaymentModel) {
+        PaymentEntity paymentEntity = springPaymentRepositoryAdapter.findById(updatePaymentModel.getId())
+                .orElseThrow(() -> new NotFoundException("Pagamento não encontrado"));
+
+        paymentEntity.setPaymentStatus(updatePaymentModel.getPaymentStatus());
+        springPaymentRepositoryAdapter.save(paymentEntity);
     }
 
     private ScholarEntity getScholarEntity(UUID scholarId) {

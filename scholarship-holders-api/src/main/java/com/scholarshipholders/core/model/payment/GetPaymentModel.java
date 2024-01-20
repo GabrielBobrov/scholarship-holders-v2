@@ -14,9 +14,14 @@ import java.util.UUID;
 @Builder
 public class GetPaymentModel {
 
+    private UUID id;
     private BigDecimal amount;
     private LocalDate paymentDate;
     private PaymentStatusEnum paymentStatus;
     private GetPaymentScholarModel scholar;
+
+    public boolean hasValidFutureStatus(PaymentStatusEnum paymentStatusEnum) {
+        return getPaymentStatus().canUpdateFor(paymentStatusEnum);
+    }
 
 }

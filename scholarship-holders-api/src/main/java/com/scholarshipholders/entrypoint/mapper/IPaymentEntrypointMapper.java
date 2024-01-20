@@ -3,7 +3,9 @@ package com.scholarshipholders.entrypoint.mapper;
 
 import com.scholarshipholders.core.model.payment.CreatePaymentModel;
 import com.scholarshipholders.core.model.payment.GetPaymentModel;
+import com.scholarshipholders.core.model.payment.UpdatePaymentModel;
 import com.scholarshipholders.entrypoint.dto.request.payment.CreatePaymentRequestDTO;
+import com.scholarshipholders.entrypoint.dto.request.payment.UpdatePaymentRequestDTO;
 import com.scholarshipholders.entrypoint.dto.response.payment.GetPaymentResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -15,5 +17,8 @@ public interface IPaymentEntrypointMapper {
     CreatePaymentModel fromCreatePaymentRequestDTOToCreatePaymentModel(CreatePaymentRequestDTO createPaymentRequestDTO);
 
     List<GetPaymentResponseDTO> fromListGetPaymentModelToListGetPaymentResponseDTO(List<GetPaymentModel> getPaymentModel);
+
+    UpdatePaymentModel fromUpdatePaymentRequestDTOTUpdatePaymentModel(UpdatePaymentRequestDTO updatePaymentRequestDTO);
+
 
 }

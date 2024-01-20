@@ -4,6 +4,7 @@ package com.scholarshipholders.entrypoint.exception;
 import com.fasterxml.jackson.databind.JsonMappingException.Reference;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.PropertyBindingException;
+import com.scholarshipholders.core.exception.BusinessException;
 import com.scholarshipholders.core.exception.NotFoundException;
 import com.scholarshipholders.core.exception.ScholarAlreadyExistsException;
 import com.scholarshipholders.entrypoint.exception.model.Problem;
@@ -64,8 +65,22 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
 	}
 
+	@ExceptionHandler(BusinessException.class)
+	public ResponseEntity<Object> handleBusinessException(RuntimeException ex, WebRequest request) {
+
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		ProblemType problemType = ProblemType.BUSINESS_ERROR;
+		String detail = ex.getMessage();
+
+		Problem problem = createProblemBuilder(status, problemType, detail)
+				.userMessage(detail)
+				.build();
+
+		return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
+	}
+
 	@ExceptionHandler({NotFoundException.class})
-	public ResponseEntity<Object> handleBusiness(RuntimeException ex, WebRequest request) {
+	public ResponseEntity<Object> handleNotFoundException(RuntimeException ex, WebRequest request) {
 
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		ProblemType problemType = ProblemType.RESOURCE_NOT_FOUND;

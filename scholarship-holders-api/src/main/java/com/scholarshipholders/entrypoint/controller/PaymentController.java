@@ -3,20 +3,19 @@ package com.scholarshipholders.entrypoint.controller;
 
 import com.scholarshipholders.core.model.payment.CreatePaymentModel;
 import com.scholarshipholders.core.model.payment.GetPaymentModel;
-import com.scholarshipholders.core.model.scholar.CreateScholarModel;
+import com.scholarshipholders.core.model.payment.UpdatePaymentModel;
 import com.scholarshipholders.core.ports.in.service.IPaymentServicePort;
-import com.scholarshipholders.core.ports.in.service.IScholarServicePort;
 import com.scholarshipholders.entrypoint.UrlConstant;
 import com.scholarshipholders.entrypoint.dto.request.payment.CreatePaymentRequestDTO;
-import com.scholarshipholders.entrypoint.dto.request.scholar.CreateScholarRequestDTO;
+import com.scholarshipholders.entrypoint.dto.request.payment.UpdatePaymentRequestDTO;
 import com.scholarshipholders.entrypoint.dto.response.payment.GetPaymentResponseDTO;
 import com.scholarshipholders.entrypoint.mapper.IPaymentEntrypointMapper;
-import com.scholarshipholders.entrypoint.mapper.IScholarEntrypointMapper;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,6 +56,22 @@ public class PaymentController {
         List<GetPaymentModel> payments = paymentServicePort.getPayments(scholarId);
 
         return paymentEntrypointMapper.fromListGetPaymentModelToListGetPaymentResponseDTO(payments);
+    }
+
+    @PatchMapping("/{paymentId}/status")
+    @ResponseStatus(HttpStatus.OK)
+    public void updatePaymentStatus(@PathVariable UUID scholarId,
+                                    @PathVariable UUID paymentId,
+                                    @RequestBody @Valid UpdatePaymentRequestDTO updatePaymentRequestDTO) {
+        log.info("Class {} method updatePaymentStatus", this.getClass().getName());
+
+        updatePaymentRequestDTO.setId(paymentId);
+        updatePaymentRequestDTO.setScholarId(scholarId);
+
+        UpdatePaymentModel updatePaymentModel = paymentEntrypointMapper.fromUpdatePaymentRequestDTOTUpdatePaymentModel(updatePaymentRequestDTO);
+        log.info("UpdatePaymentModel {}", updatePaymentModel);
+
+        paymentServicePort.updatePaymentStatus(updatePaymentModel);
     }
 
 

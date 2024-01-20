@@ -1,10 +1,13 @@
 package com.scholarshipholders.core.adapter.service;
 
 
+import com.scholarshipholders.core.exception.BusinessException;
 import com.scholarshipholders.core.model.payment.CreatePaymentModel;
 import com.scholarshipholders.core.model.payment.GetPaymentModel;
+import com.scholarshipholders.core.model.payment.UpdatePaymentModel;
 import com.scholarshipholders.core.ports.in.service.IPaymentServicePort;
 import com.scholarshipholders.core.ports.out.repository.IPaymentRepositoryPort;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,6 +24,7 @@ public class PaymentServiceAdapterImpl implements IPaymentServicePort {
 
 
     @Override
+    @Transactional
     public void createPayment(CreatePaymentModel createPaymentModel) {
         log.info("Class {} method createPayment", this.getClass().getName());
 
@@ -31,5 +35,20 @@ public class PaymentServiceAdapterImpl implements IPaymentServicePort {
     public List<GetPaymentModel> getPayments(UUID scholarId) {
 
         return paymentRepositoryPort.getPayments(scholarId);
+    }
+
+    @Override
+    @Transactional
+    public void updatePaymentStatus(UpdatePaymentModel updatePaymentModel) {
+        log.info("Class {} method updatePaymentStauts", this.getClass().getName());
+        GetPaymentModel payment = paymentRepositoryPort.getPayment(updatePaymentModel.getId());
+
+        if (!payment.hasValidFutureStatus(updatePaymentModel.getPaymentStatus())) {
+            throw new BusinessException(
+                    String.format("Pagamento %s não pode ser alterado para %s",
+                            updatePaymentModel.getId(), updatePaymentModel.getPaymentStatus().name()));
+        }
+
+        paymentRepositoryPort.updatePaymentStatus(updatePaymentModel);
     }
 }
