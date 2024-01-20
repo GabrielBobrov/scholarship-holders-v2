@@ -59,4 +59,8 @@ public class PaymentEntity {
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
 
+    public boolean hasValidFutureStatus(PaymentStatusEnum paymentStatusEnum) {
+        return getPaymentStatus().canUpdateFor(paymentStatusEnum);
+    }
+
 }

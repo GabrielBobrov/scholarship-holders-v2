@@ -77,8 +77,18 @@ public class PaymentRepositoryAdapterImpl implements IPaymentRepositoryPort {
 
     @Override
     public void updatePaymentStatus(UpdatePaymentModel updatePaymentModel) {
+        log.info("Class {} method updatePaymentStatus", this.getClass().getName());
+
         PaymentEntity paymentEntity = springPaymentRepositoryAdapter.findById(updatePaymentModel.getId())
                 .orElseThrow(() -> new NotFoundException("Pagamento não encontrado"));
+
+        if (!paymentEntity.hasValidFutureStatus(updatePaymentModel.getPaymentStatus())) {
+            throw new BusinessException(
+                    String.format("Pagamento %s não pode ser alterado de %s para %s",
+                            updatePaymentModel.getId(),
+                            paymentEntity.getPaymentStatus().name(),
+                            updatePaymentModel.getPaymentStatus().name()));
+        }
 
         paymentEntity.setPaymentStatus(updatePaymentModel.getPaymentStatus());
         springPaymentRepositoryAdapter.save(paymentEntity);

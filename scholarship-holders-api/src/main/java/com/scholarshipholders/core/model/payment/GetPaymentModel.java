@@ -19,9 +19,4 @@ public class GetPaymentModel {
     private LocalDate paymentDate;
     private PaymentStatusEnum paymentStatus;
     private GetPaymentScholarModel scholar;
-
-    public boolean hasValidFutureStatus(PaymentStatusEnum paymentStatusEnum) {
-        return getPaymentStatus().canUpdateFor(paymentStatusEnum);
-    }
-
 }

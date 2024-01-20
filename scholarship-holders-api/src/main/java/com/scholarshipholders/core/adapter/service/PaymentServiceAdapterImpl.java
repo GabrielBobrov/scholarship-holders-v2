@@ -41,13 +41,6 @@ public class PaymentServiceAdapterImpl implements IPaymentServicePort {
     @Transactional
     public void updatePaymentStatus(UpdatePaymentModel updatePaymentModel) {
         log.info("Class {} method updatePaymentStauts", this.getClass().getName());
-        GetPaymentModel payment = paymentRepositoryPort.getPayment(updatePaymentModel.getId());
-
-        if (!payment.hasValidFutureStatus(updatePaymentModel.getPaymentStatus())) {
-            throw new BusinessException(
-                    String.format("Pagamento %s não pode ser alterado para %s",
-                            updatePaymentModel.getId(), updatePaymentModel.getPaymentStatus().name()));
-        }
 
         paymentRepositoryPort.updatePaymentStatus(updatePaymentModel);
     }
