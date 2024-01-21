@@ -36,6 +36,7 @@
           <i class="fas fa-edit mr-2" (click)="openModalUpdateScholar(row)"></i>
           <i class="fas fa-trash mr-2" (click)="deleteScholar(row)"></i>
           <i class="fas fa-eye-slash" (click)="hideDocument(row)"></i>
+          <a (click)="storeIdAndRedirect(row.id)">Ver Pagamentos</a>
         </td>
       </tr>
     </tbody>

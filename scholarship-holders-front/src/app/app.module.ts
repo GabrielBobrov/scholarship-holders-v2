@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CreateScholarComponent } from './create-scholar/create-scholar.component';
+import { TablePaymentsComponent } from './table-payments/table-payments.component';
+import { CreatePaymentComponent } from './create-payment/create-payment.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { CreateScholarComponent } from './create-scholar/create-scholar.componen
     TableComponent,
     UpdateScholarComponent,
     CreateScholarComponent,
+    TablePaymentsComponent,
+    CreatePaymentComponent,
   ],
   imports: [
     BrowserModule,
