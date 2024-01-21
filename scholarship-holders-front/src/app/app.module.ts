@@ -14,6 +14,7 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CreateScholarComponent } from './create-scholar/create-scholar.component';
 import { TablePaymentsComponent } from './table-payments/table-payments.component';
 import { CreatePaymentComponent } from './create-payment/create-payment.component';
+import { UpdatePaymentComponent } from './update-payment/update-payment.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CreatePaymentComponent } from './create-payment/create-payment.componen
     CreateScholarComponent,
     TablePaymentsComponent,
     CreatePaymentComponent,
+    UpdatePaymentComponent,
   ],
   imports: [
     BrowserModule,

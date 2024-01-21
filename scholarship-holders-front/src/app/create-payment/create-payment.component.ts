@@ -16,7 +16,7 @@ export class CreatePaymentComponent {
 
   onSubmit() {
     console.log(this.row);
-    this.row.id = localStorage.getItem('currentPaymentId');
+    this.row.scholarId = localStorage.getItem('currentPaymentId');
     this.scholarService.createPayment(this.row).subscribe(
       (response) => {
         console.log(response);

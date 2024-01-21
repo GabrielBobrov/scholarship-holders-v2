@@ -29,7 +29,9 @@
     <tr *ngFor="let payment of payments">
       <td>{{ payment.paymentDate | date : "dd/MM/yyyy" }}</td>
 
-      <td>{{ payment.amount }}</td>
+      <td>
+        {{ payment.amount | currency : "BRL" }}
+      </td>
       <td
         [ngClass]="
           payment.paymentStatus == 'PAID'
@@ -52,7 +54,17 @@
         {{ payment.scholar.bankAgency }}, Número da Conta:
         {{ payment.scholar.accountNumber }}
       </td>
-      <td></td>
+      <td
+        *ngIf="
+          payment.paymentStatus !== 'PAID' &&
+          payment.paymentStatus !== 'CANCELLED'
+        "
+      >
+        <i
+          class="fas fa-edit mr-2"
+          (click)="openModalUpdatePayment(payment)"
+        ></i>
+      </td>
     </tr>
   </tbody>
 </table>

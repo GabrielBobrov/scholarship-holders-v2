@@ -40,7 +40,23 @@ export class ScholarService {
 
   createPayment(payment: PaymentDTO) {
     return this.http
-      .post(`http://localhost:8080/scholars/${payment.id}/payments`, payment)
+      .post(
+        `http://localhost:8080/scholars/${payment.scholarId}/payments`,
+        payment
+      )
+      .pipe(
+        map((result) => {
+          return result;
+        })
+      );
+  }
+
+  updatePaymentStatus(payment: PaymentDTO) {
+    return this.http
+      .patch(
+        `http://localhost:8080/scholars/${payment.scholarId}/payments/${payment.id}/status`,
+        payment
+      )
       .pipe(
         map((result) => {
           return result;

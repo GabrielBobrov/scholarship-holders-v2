@@ -1,0 +1,41 @@
+<div class="modal-content green-theme custom-form">
+  <div class="modal-content green-theme">
+    <h4 class="mb-3">Editar Registro</h4>
+    <form
+      #editForm="ngForm"
+      (ngSubmit)="onSubmit()"
+      class="needs-validation"
+      novalidate
+    >
+      <div class="form-group mb-3">
+        <label for="paymentStatus">Alterar pagamento para:</label>
+        <button
+          class="btn btn-primary"
+          *ngIf="editedRow.paymentStatus === 'NOT_COMPLETED'"
+          (click)="setStatus('REQUESTED'); onSubmit()"
+        >
+          SOLICITADO
+        </button>
+        <button
+          class="btn btn-primary"
+          *ngIf="
+            editedRow.paymentStatus === 'NOT_COMPLETED' ||
+            editedRow.paymentStatus === 'REQUESTED'
+          "
+          (click)="setStatus('CANCELLED'); onSubmit()"
+          class="btn btn-danger"
+        >
+          CANCELADO
+        </button>
+        <button
+          class="btn btn-primary"
+          *ngIf="editedRow.paymentStatus === 'REQUESTED'"
+          (click)="setStatus('PAID'); onSubmit()"
+          class="btn btn-success"
+        >
+          PAGO
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
