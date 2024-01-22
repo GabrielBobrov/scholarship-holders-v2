@@ -5,6 +5,7 @@ import com.scholarshipholders.core.model.payment.CreatePaymentModel;
 import com.scholarshipholders.core.ports.in.service.IPaymentServicePort;
 import com.scholarshipholders.dummy.PaymentDummy;
 import com.scholarshipholders.entrypoint.dto.request.payment.CreatePaymentRequestDTO;
+import com.scholarshipholders.entrypoint.dto.request.payment.UpdatePaymentRequestDTO;
 import com.scholarshipholders.entrypoint.mapper.IPaymentEntrypointMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import java.util.UUID;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -68,6 +70,19 @@ class PaymentControllerTest {
    void testDeletePayment() throws Exception {
       mockMvc.perform(delete("/scholars/" + UUID.randomUUID() + "/payments/" + UUID.randomUUID()))
               .andExpect(status().isNoContent());
+   }
+
+   @Test
+   void testUpdatePaymentStatus() throws Exception {
+      UpdatePaymentRequestDTO updatePaymentRequestDTO = PaymentDummy.updatePaymentRequestDTOBuilder().build();
+      String json = objectMapper.writeValueAsString(updatePaymentRequestDTO);
+
+      when(paymentEntrypointMapper.fromUpdatePaymentRequestDTOTUpdatePaymentModel(updatePaymentRequestDTO)).thenReturn(PaymentDummy.updatePaymentModelBuilder().build());
+
+      mockMvc.perform(patch("/scholars/" + UUID.randomUUID() + "/payments/" + UUID.randomUUID() + "/status")
+                      .content(json)
+                      .contentType(MediaType.APPLICATION_JSON))
+              .andExpect(status().isOk());
    }
 
 

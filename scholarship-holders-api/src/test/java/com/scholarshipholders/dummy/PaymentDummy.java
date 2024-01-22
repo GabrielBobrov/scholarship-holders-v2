@@ -7,6 +7,7 @@ import com.scholarshipholders.core.model.scholar.CreateScholarModel;
 import com.scholarshipholders.core.model.scholar.GetScholarModel;
 import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
 import com.scholarshipholders.entrypoint.dto.request.payment.CreatePaymentRequestDTO;
+import com.scholarshipholders.entrypoint.dto.request.payment.UpdatePaymentRequestDTO;
 import com.scholarshipholders.entrypoint.dto.request.scholar.CreateScholarRequestDTO;
 import com.scholarshipholders.entrypoint.dto.request.scholar.UpdateScholarRequestDTO;
 import com.scholarshipholders.entrypoint.dto.response.scholar.GetScholarResponseDTO;
@@ -32,6 +33,13 @@ public class PaymentDummy {
         return CreatePaymentModel.builder()
                 .paymentDate(LocalDate.now().plusDays(2))
                 .amount(BigDecimal.TEN)
+                .scholarId(UUID.randomUUID());
+    }
+
+    public static UpdatePaymentRequestDTO.UpdatePaymentRequestDTOBuilder updatePaymentRequestDTOBuilder() {
+        return UpdatePaymentRequestDTO.builder()
+                .id(UUID.randomUUID())
+                .paymentStatus(PaymentStatusEnum.PAID)
                 .scholarId(UUID.randomUUID());
     }
 
