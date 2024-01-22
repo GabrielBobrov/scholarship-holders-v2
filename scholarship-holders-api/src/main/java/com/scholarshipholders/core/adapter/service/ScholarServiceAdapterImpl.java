@@ -22,7 +22,6 @@ public class ScholarServiceAdapterImpl implements IScholarServicePort {
 
     private final IScholarRepositoryPort scholarRepositoryPort;
 
-
     @Override
     public GetScholarModel getScholar(UUID id) {
         log.info("Class {} method getScholar", this.getClass().getName());
