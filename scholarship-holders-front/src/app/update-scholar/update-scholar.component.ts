@@ -18,10 +18,14 @@ export class UpdateScholarComponent {
   ) {}
   row = new ScholarDTO();
   editedRow = JSON.parse(JSON.stringify(this.row));
+  banks: any[] | undefined;
 
   ngOnInit(): void {
     this.row = this.config.data.row;
     this.editedRow = JSON.parse(JSON.stringify(this.row));
+    this.scholarService.getBanks().subscribe((banks: any) => {
+      this.banks = banks;
+    });
   }
 
   onSubmit() {

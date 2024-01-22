@@ -45,14 +45,17 @@
       </div>
       <div class="form-group mb-3">
         <label for="bankCode">Código do Banco:</label>
-        <input
-          type="text"
+        <select
           [(ngModel)]="editedRow.bankCode"
           name="bankCode"
           id="bankCode"
           class="form-control"
           required
-        />
+        >
+          <option *ngFor="let bank of banks" [value]="bank.code">
+            {{ bank.code }} - {{ bank.name }}
+          </option>
+        </select>
       </div>
       <div class="form-group mb-3">
         <label for="bankAgency">Agência do Banco:</label>
