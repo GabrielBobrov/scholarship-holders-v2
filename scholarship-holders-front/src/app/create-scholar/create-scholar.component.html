@@ -78,6 +78,15 @@
       />
       <div class="invalid-feedback">Por favor, preencha este campo.</div>
     </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!createForm.form.valid"
+    >
+      Salvar
+    </button>
   </form>
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
 </div>

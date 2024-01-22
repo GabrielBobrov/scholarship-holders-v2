@@ -23,7 +23,9 @@
     <tbody>
       <tr *ngFor="let row of data">
         <td>{{ row.fullName }}</td>
-        <td>{{ row.documentType }}</td>
+        <td>
+          {{ row.documentType == "PASSPORT" ? "Passaporte" : row.documentType }}
+        </td>
         <td *ngIf="!row.hideDocument">{{ row.document }}</td>
         <td *ngIf="row.hideDocument">*********</td>
         <td>

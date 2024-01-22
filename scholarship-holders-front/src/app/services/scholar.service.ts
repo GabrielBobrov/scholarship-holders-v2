@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ScholarDTO } from '../dtos/response/scholarDTO';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { PaymentDTO } from '../dtos/response/paymentDTO';
 
 @Injectable({
@@ -24,8 +24,8 @@ export class ScholarService {
     );
   }
 
-  createScholar(scholar: ScholarDTO) {
-    return this.http.post('http://localhost:8080/scholars', scholar).pipe(
+  createScholar(scholar: ScholarDTO): Observable<HttpResponse<any>> {
+    return this.http.post<any>('http://localhost:8080/scholars', scholar).pipe(
       map((result) => {
         return result;
       })
