@@ -2,9 +2,6 @@ package com.scholarshipholders.infrastructure.mapper;
 
 
 import com.scholarshipholders.core.model.payment.GetPaymentModel;
-import com.scholarshipholders.core.model.scholar.CreateScholarModel;
-import com.scholarshipholders.core.model.scholar.GetScholarModel;
-import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
 import com.scholarshipholders.infrastructure.entity.payment.PaymentEntity;
 import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
 import org.mapstruct.Mapper;

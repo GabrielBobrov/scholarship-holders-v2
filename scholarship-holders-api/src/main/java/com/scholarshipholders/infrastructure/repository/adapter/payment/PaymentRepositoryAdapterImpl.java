@@ -1,11 +1,9 @@
 package com.scholarshipholders.infrastructure.repository.adapter.payment;
 
 
-import com.scholarshipholders.core.exception.BusinessException;
 import com.scholarshipholders.core.exception.NotFoundException;
 import com.scholarshipholders.core.model.payment.CreatePaymentModel;
 import com.scholarshipholders.core.model.payment.GetPaymentModel;
-import com.scholarshipholders.core.model.payment.UpdatePaymentModel;
 import com.scholarshipholders.core.ports.out.repository.IPaymentRepositoryPort;
 import com.scholarshipholders.infrastructure.entity.payment.PaymentEntity;
 import com.scholarshipholders.infrastructure.entity.payment.enums.PaymentStatusEnum;

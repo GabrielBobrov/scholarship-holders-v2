@@ -7,7 +7,6 @@ import com.scholarshipholders.core.model.payment.GetPaymentModel;
 import com.scholarshipholders.core.model.payment.UpdatePaymentModel;
 import com.scholarshipholders.core.ports.in.service.IPaymentServicePort;
 import com.scholarshipholders.core.ports.out.repository.IPaymentRepositoryPort;
-import com.scholarshipholders.core.ports.out.repository.IScholarRepositoryPort;
 import com.scholarshipholders.infrastructure.entity.payment.PaymentEntity;
 import com.scholarshipholders.infrastructure.entity.payment.enums.PaymentStatusEnum;
 import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
@@ -17,7 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
