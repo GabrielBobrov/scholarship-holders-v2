@@ -8,6 +8,10 @@ import { PaymentDTO } from '../dtos/response/paymentDTO';
   providedIn: 'root',
 })
 export class ScholarService {
+  getBanks() {
+    return this.http.get('http://localhost:8080/banks');
+  }
+
   getScholars() {
     return this.http.get('http://localhost:8080/scholars');
   }
