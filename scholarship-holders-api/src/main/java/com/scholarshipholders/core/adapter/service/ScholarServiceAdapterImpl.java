@@ -55,11 +55,6 @@ public class ScholarServiceAdapterImpl implements IScholarServicePort {
     public UpdateScholarModel updateScholar(UpdateScholarModel updateScholarModel) {
         log.info("Class {} method updateScholar", this.getClass().getName());
 
-        Boolean alreadyExists = scholarRepositoryPort.existsByDocumentAndDocumentType(updateScholarModel.getDocument(), updateScholarModel.getDocumentType());
-
-        if (Boolean.TRUE.equals(alreadyExists))
-            throw new ScholarAlreadyExistsException(String.format("Um bolsista com o documento %s e do tipo %s já foi registrado.", updateScholarModel.getDocument(), updateScholarModel.getDocumentType()));
-
         GetScholarModel scholar = scholarRepositoryPort.getScholar(updateScholarModel.getId());
         updateScholarModel.setCreatedAt(scholar.getCreatedAt());
 
