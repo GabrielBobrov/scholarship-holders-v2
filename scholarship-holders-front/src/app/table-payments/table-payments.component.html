@@ -54,13 +54,14 @@
         {{ payment.scholar.bankAgency }}, Número da Conta:
         {{ payment.scholar.accountNumber }}
       </td>
-      <td
-        *ngIf="
-          payment.paymentStatus !== 'PAID' &&
-          payment.paymentStatus !== 'CANCELLED'
-        "
-      >
+      <td>
+        <i class="fas fa-trash mr-2" (click)="deletePayment(payment)"></i>
+
         <i
+          *ngIf="
+            payment.paymentStatus !== 'PAID' &&
+            payment.paymentStatus !== 'CANCELLED'
+          "
           class="fas fa-edit mr-2"
           (click)="openModalUpdatePayment(payment)"
         ></i>

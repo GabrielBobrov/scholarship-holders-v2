@@ -68,5 +68,13 @@ export class ScholarService {
       );
   }
 
+  deletePayment(scholarId: any, paymentId: any) {
+    this.http
+      .delete(
+        `http://localhost:8080/scholars/${scholarId}/payments/${paymentId}`
+      )
+      .subscribe(() => console.log('payment deleted'));
+  }
+
   constructor(private http: HttpClient) {}
 }

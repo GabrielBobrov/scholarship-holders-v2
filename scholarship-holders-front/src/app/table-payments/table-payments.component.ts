@@ -13,6 +13,7 @@ import { UpdatePaymentComponent } from '../update-payment/update-payment.compone
 })
 export class TablePaymentsComponent implements OnInit {
   payments: any;
+  scholarId: any;
 
   constructor(
     private scholarService: ScholarService,
@@ -21,8 +22,8 @@ export class TablePaymentsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = localStorage.getItem('currentPaymentId');
-    this.scholarService.getPayments(id).subscribe((data: any) => {
+    this.scholarId = localStorage.getItem('currentPaymentId');
+    this.scholarService.getPayments(this.scholarId).subscribe((data: any) => {
       this.payments = data;
     });
   }
@@ -43,5 +44,11 @@ export class TablePaymentsComponent implements OnInit {
       data: { row: row },
       showHeader: false,
     });
+  }
+
+  deletePayment(row: any) {
+    console.log(row);
+    this.scholarService.deletePayment(this.scholarId, row.id);
+    window.location.reload();
   }
 }
