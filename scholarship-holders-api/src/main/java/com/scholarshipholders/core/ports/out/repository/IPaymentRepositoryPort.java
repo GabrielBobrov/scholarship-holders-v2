@@ -18,9 +18,8 @@ public interface IPaymentRepositoryPort {
 
     PaymentEntity findPaymentEntity(UUID paymentId, ScholarEntity scholarEntity);
 
-    ScholarEntity getScholarEntity(UUID scholarId);
-
     void updatePaymentStatus(PaymentEntity paymentEntity, PaymentStatusEnum newStatus);
 
+    void deletePayment(UUID paymentId, UUID id);
 
 }

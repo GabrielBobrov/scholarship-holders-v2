@@ -7,6 +7,7 @@ import com.scholarshipholders.core.model.payment.GetPaymentModel;
 import com.scholarshipholders.core.model.payment.UpdatePaymentModel;
 import com.scholarshipholders.core.ports.in.service.IPaymentServicePort;
 import com.scholarshipholders.core.ports.out.repository.IPaymentRepositoryPort;
+import com.scholarshipholders.core.ports.out.repository.IScholarRepositoryPort;
 import com.scholarshipholders.infrastructure.entity.payment.PaymentEntity;
 import com.scholarshipholders.infrastructure.entity.payment.enums.PaymentStatusEnum;
 import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
@@ -24,6 +25,7 @@ import java.util.UUID;
 public class PaymentServiceAdapterImpl implements IPaymentServicePort {
 
     private final IPaymentRepositoryPort paymentRepositoryPort;
+    private final IScholarRepositoryPort scholarRepositoryPort;
 
 
     @Override
@@ -45,12 +47,20 @@ public class PaymentServiceAdapterImpl implements IPaymentServicePort {
     public void updatePaymentStatus(UpdatePaymentModel updatePaymentModel) {
         log.info("Class {} method updatePaymentStatus", this.getClass().getName());
 
-        ScholarEntity scholarEntity = paymentRepositoryPort.getScholarEntity(updatePaymentModel.getScholarId());
+        ScholarEntity scholarEntity = scholarRepositoryPort.getScholarEntity(updatePaymentModel.getScholarId());
         PaymentEntity paymentEntity = paymentRepositoryPort.findPaymentEntity(updatePaymentModel.getId(), scholarEntity);
 
         validatePaymentStatusUpdate(paymentEntity, updatePaymentModel.getPaymentStatus());
 
         paymentRepositoryPort.updatePaymentStatus(paymentEntity, updatePaymentModel.getPaymentStatus());
+    }
+
+    @Override
+    @Transactional
+    public void deletePayment(UUID scholarId, UUID paymentId) {
+        log.info("Class {} method deletePayment", this.getClass().getName());
+
+        paymentRepositoryPort.deletePayment(scholarId, paymentId);
     }
 
     private void validatePaymentStatusUpdate(PaymentEntity paymentEntity, PaymentStatusEnum newStatus) {

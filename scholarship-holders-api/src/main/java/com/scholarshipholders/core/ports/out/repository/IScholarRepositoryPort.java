@@ -4,6 +4,7 @@ package com.scholarshipholders.core.ports.out.repository;
 import com.scholarshipholders.core.model.scholar.CreateScholarModel;
 import com.scholarshipholders.core.model.scholar.GetScholarModel;
 import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
+import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
 import com.scholarshipholders.infrastructure.entity.scholar.enums.DocumentTypeEnum;
 
 import java.util.List;
@@ -22,4 +23,7 @@ public interface IScholarRepositoryPort {
     void deleteScholar(GetScholarModel entity);
 
     Boolean existsByDocumentAndDocumentType(String document, DocumentTypeEnum documentType);
+
+    ScholarEntity getScholarEntity(UUID scholarId);
+
 }

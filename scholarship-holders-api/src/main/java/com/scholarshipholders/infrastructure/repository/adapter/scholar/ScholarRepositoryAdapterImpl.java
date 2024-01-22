@@ -99,4 +99,12 @@ public class ScholarRepositoryAdapterImpl implements IScholarRepositoryPort {
         return springScholarRepository.findByDocumentAndDocumentType(document, documentType).isPresent();
     }
 
+    @Override
+    public ScholarEntity getScholarEntity(UUID scholarId) {
+        ScholarEntity scholarEntity = springScholarRepository.findById(scholarId)
+                .orElseThrow(() -> new NotFoundException("Bolsista não encontrado"));
+        log.info("ScholarEntity {}", scholarEntity);
+        return scholarEntity;
+    }
+
 }

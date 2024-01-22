@@ -16,4 +16,6 @@ public interface ISpringPaymentRepositoryAdapter extends JpaRepository<PaymentEn
 
     Optional<PaymentEntity> findByIdAndScholar(UUID id, ScholarEntity scholar);
 
+    void deleteByIdAndScholarId(UUID id, UUID scholarId);
+
 }

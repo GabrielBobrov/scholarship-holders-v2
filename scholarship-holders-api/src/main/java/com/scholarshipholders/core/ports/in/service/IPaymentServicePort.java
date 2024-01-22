@@ -16,6 +16,7 @@ public interface IPaymentServicePort {
 
     void updatePaymentStatus(UpdatePaymentModel updatePaymentModel);
 
+    void deletePayment(UUID id, UUID paymentId);
 
 }
 
