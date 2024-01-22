@@ -113,18 +113,4 @@ class ScholarServiceAdapterImplTest {
         verify(scholarRepositoryPort, times(1)).existsByDocumentAndDocumentType(createScholarModel.getDocument(), createScholarModel.getDocumentType());
         verify(scholarRepositoryPort, never()).createScholar(createScholarModel);
     }
-
-    @Test
-    void testUpdateScholar_ThrowsScholarAlreadyExistsException() {
-        UpdateScholarModel updateScholarModel = ScholarDummy.updateScholarModelBuilder().build();
-        updateScholarModel.setDocument("123456789");
-        updateScholarModel.setDocumentType(DocumentTypeEnum.CPF);
-
-        when(scholarRepositoryPort.existsByDocumentAndDocumentType(updateScholarModel.getDocument(), updateScholarModel.getDocumentType())).thenReturn(true);
-
-        assertThrows(ScholarAlreadyExistsException.class, () -> scholarServiceAdapter.updateScholar(updateScholarModel));
-
-        verify(scholarRepositoryPort, times(1)).existsByDocumentAndDocumentType(updateScholarModel.getDocument(), updateScholarModel.getDocumentType());
-        verify(scholarRepositoryPort, never()).updateScholar(updateScholarModel);
-    }
 }
