@@ -2,3 +2,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.button-spacing {
+  margin-right: 10px; /* Ajuste o valor conforme necessário */
+}

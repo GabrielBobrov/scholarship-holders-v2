@@ -40,11 +40,20 @@
         </td>
         <td>{{ row.createdAt | date : "dd/MM/yyyy" }}</td>
         <td>
-          <i class="fas fa-edit mr-2" (click)="openModalUpdateScholar(row)"></i>
-          <i class="fas fa-trash mr-2" (click)="deleteScholar(row)"></i>
-          <i class="fas fa-eye-slash" (click)="hideDocument(row)"></i>
           <i
-            class="fa fa-money"
+            class="fas fa-edit button-spacing"
+            (click)="openModalUpdateScholar(row)"
+          ></i>
+          <i
+            class="fas fa-trash button-spacing"
+            (click)="deleteScholar(row)"
+          ></i>
+          <i
+            class="fas fa-eye-slash button-spacing"
+            (click)="hideDocument(row)"
+          ></i>
+          <i
+            class="fa fa-money button-spacing"
             aria-hidden="true"
             (click)="storeIdAndRedirect(row.id)"
           ></i>

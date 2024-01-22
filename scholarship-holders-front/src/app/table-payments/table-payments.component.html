@@ -55,14 +55,17 @@
         {{ payment.scholar.accountNumber }}
       </td>
       <td>
-        <i class="fas fa-trash mr-2" (click)="deletePayment(payment)"></i>
+        <i
+          class="fas fa-trash mr-2 button-spacing"
+          (click)="deletePayment(payment)"
+        ></i>
 
         <i
           *ngIf="
             payment.paymentStatus !== 'PAID' &&
             payment.paymentStatus !== 'CANCELLED'
           "
-          class="fas fa-edit mr-2"
+          class="fas fa-edit mr-2 button-spacing"
           (click)="openModalUpdatePayment(payment)"
         ></i>
       </td>

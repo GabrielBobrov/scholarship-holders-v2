@@ -28,3 +28,7 @@
   top: 0;
   right: 0;
 }
+
+.button-spacing {
+  margin-right: 10px; /* Ajuste o valor conforme necessário */
+}

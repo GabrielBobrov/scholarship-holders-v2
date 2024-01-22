@@ -8,30 +8,30 @@
       novalidate
     >
       <div class="form-group mb-3">
-        <label for="paymentStatus">Alterar pagamento para:</label>
+        <label for="paymentStatus">Alterar pagamento para: </label>
         <button
-          class="btn btn-primary"
+          class="btn btn-primary button-spacing"
           *ngIf="editedRow.paymentStatus === 'NOT_COMPLETED'"
           (click)="setStatus('REQUESTED'); onSubmit()"
         >
           SOLICITADO
         </button>
         <button
-          class="btn btn-primary"
+          class="btn btn-primary button-spacing"
           *ngIf="
             editedRow.paymentStatus === 'NOT_COMPLETED' ||
             editedRow.paymentStatus === 'REQUESTED'
           "
           (click)="setStatus('CANCELLED'); onSubmit()"
-          class="btn btn-danger"
+          class="btn btn-danger button-spacing"
         >
           CANCELADO
         </button>
         <button
-          class="btn btn-primary"
+          class="btn btn-primary button-spacing"
           *ngIf="editedRow.paymentStatus === 'REQUESTED'"
           (click)="setStatus('PAID'); onSubmit()"
-          class="btn btn-success"
+          class="btn btn-success button-spacing"
         >
           PAGO
         </button>
