@@ -45,6 +45,7 @@
             (click)="openModalUpdateScholar(row)"
           ></i>
           <i
+            *ngIf="!row.hasRestrictedPayment"
             class="fas fa-trash button-spacing"
             (click)="deleteScholar(row)"
           ></i>

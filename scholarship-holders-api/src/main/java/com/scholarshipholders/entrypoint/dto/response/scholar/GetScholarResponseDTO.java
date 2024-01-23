@@ -28,5 +28,6 @@ public class GetScholarResponseDTO {
     private Integer bankCode;
     private Integer bankAgency;
     private Long accountNumber;
+    private Boolean hasRestrictedPayment;
     private LocalDate createdAt;
 }

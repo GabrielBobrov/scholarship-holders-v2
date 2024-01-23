@@ -14,5 +14,6 @@ public class GetScholarModel extends ScholarModelBase {
 
     private UUID id;
     private LocalDate createdAt;
+    private Boolean hasRestrictedPayment;
 
 }

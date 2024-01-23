@@ -1,10 +1,13 @@
 package com.scholarshipholders.core.adapter.service;
 
 import com.scholarshipholders.core.exception.ScholarAlreadyExistsException;
+import com.scholarshipholders.core.model.payment.GetPaymentModel;
 import com.scholarshipholders.core.model.scholar.CreateScholarModel;
 import com.scholarshipholders.core.model.scholar.GetScholarModel;
 import com.scholarshipholders.core.model.scholar.UpdateScholarModel;
+import com.scholarshipholders.core.ports.in.service.IPaymentServicePort;
 import com.scholarshipholders.core.ports.out.repository.IScholarRepositoryPort;
+import com.scholarshipholders.dummy.PaymentDummy;
 import com.scholarshipholders.dummy.ScholarDummy;
 import com.scholarshipholders.infrastructure.entity.scholar.enums.DocumentTypeEnum;
 import org.junit.jupiter.api.Test;
@@ -20,6 +23,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -30,6 +34,9 @@ class ScholarServiceAdapterImplTest {
 
     @Mock
     private IScholarRepositoryPort scholarRepositoryPort;
+
+    @Mock
+    private IPaymentServicePort paymentServicePort;
 
     @InjectMocks
     private ScholarServiceAdapterImpl scholarServiceAdapter;
@@ -51,8 +58,12 @@ class ScholarServiceAdapterImplTest {
     void testGetScholars() {
         List<GetScholarModel> expectedModels = new ArrayList<>();
         expectedModels.add(ScholarDummy.getScholarModelBuilder().build());
+        GetPaymentModel getPaymentModel = PaymentDummy.getPaymentModelBuilder().build();
+        List<GetPaymentModel> paymentModels = new ArrayList<>();
+        paymentModels.add(getPaymentModel);
 
         when(scholarRepositoryPort.getScholars()).thenReturn(expectedModels);
+        when(paymentServicePort.getPayments(any())).thenReturn(paymentModels);
 
         List<GetScholarModel> actualModels = scholarServiceAdapter.getScholars();
 
