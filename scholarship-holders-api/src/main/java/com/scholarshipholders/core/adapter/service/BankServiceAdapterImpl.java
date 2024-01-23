@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -22,7 +24,12 @@ public class BankServiceAdapterImpl implements IBankServicePort {
         log.info("Class {} method getScholar", this.getClass().getName());
 
         List<GetBanksResponseDTO> banks = bankHttpClientPort.getBanks();
+        List<GetBanksResponseDTO> banksWithCode = banks.stream()
+                .filter(Objects::nonNull)
+                .filter(bank -> bank.getCode() != null)
+                .collect(Collectors.toList());
         log.info("banks {} ", banks);
-        return banks;
+
+        return banksWithCode;
     }
 }
