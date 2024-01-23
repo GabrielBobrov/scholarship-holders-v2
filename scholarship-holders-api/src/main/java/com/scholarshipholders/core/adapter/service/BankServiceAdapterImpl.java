@@ -2,8 +2,8 @@ package com.scholarshipholders.core.adapter.service;
 
 
 import com.scholarshipholders.core.ports.in.service.IBankServicePort;
-import com.scholarshipholders.infrastructure.integration.ms.account.model.response.GetBanksResponseDTO;
-import com.scholarshipholders.infrastructure.integration.ms.account.port.in.IBankHttpClientPort;
+import com.scholarshipholders.infrastructure.integration.bank.model.response.GetBanksResponseDTO;
+import com.scholarshipholders.infrastructure.integration.bank.port.in.IBankHttpClientPort;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

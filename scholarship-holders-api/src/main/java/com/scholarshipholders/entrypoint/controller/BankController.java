@@ -3,7 +3,7 @@ package com.scholarshipholders.entrypoint.controller;
 
 import com.scholarshipholders.core.ports.in.service.IBankServicePort;
 import com.scholarshipholders.entrypoint.UrlConstant;
-import com.scholarshipholders.infrastructure.integration.ms.account.model.response.GetBanksResponseDTO;
+import com.scholarshipholders.infrastructure.integration.bank.model.response.GetBanksResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

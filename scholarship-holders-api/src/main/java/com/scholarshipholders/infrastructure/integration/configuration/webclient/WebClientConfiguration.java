@@ -4,7 +4,7 @@ package com.scholarshipholders.infrastructure.integration.configuration.webclien
 
 import com.scholarshipholders.core.exception.NotificationException;
 import com.scholarshipholders.infrastructure.integration.configuration.webclient.model.WebClientErrorResponse;
-import com.scholarshipholders.infrastructure.integration.ms.account.client.BankHttpClient;
+import com.scholarshipholders.infrastructure.integration.bank.client.BankHttpClient;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;

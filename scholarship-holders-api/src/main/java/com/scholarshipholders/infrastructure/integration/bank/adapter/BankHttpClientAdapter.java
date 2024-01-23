@@ -1,9 +1,9 @@
-package com.scholarshipholders.infrastructure.integration.ms.account.adapter;
+package com.scholarshipholders.infrastructure.integration.bank.adapter;
 
 
-import com.scholarshipholders.infrastructure.integration.ms.account.client.BankHttpClient;
-import com.scholarshipholders.infrastructure.integration.ms.account.model.response.GetBanksResponseDTO;
-import com.scholarshipholders.infrastructure.integration.ms.account.port.in.IBankHttpClientPort;
+import com.scholarshipholders.infrastructure.integration.bank.client.BankHttpClient;
+import com.scholarshipholders.infrastructure.integration.bank.model.response.GetBanksResponseDTO;
+import com.scholarshipholders.infrastructure.integration.bank.port.in.IBankHttpClientPort;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

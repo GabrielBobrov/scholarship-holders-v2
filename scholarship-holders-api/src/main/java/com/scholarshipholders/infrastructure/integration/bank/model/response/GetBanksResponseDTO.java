@@ -1,4 +1,4 @@
-package com.scholarshipholders.infrastructure.integration.ms.account.model.response;
+package com.scholarshipholders.infrastructure.integration.bank.model.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
