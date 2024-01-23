@@ -3,21 +3,22 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ScholarDTO } from '../dtos/response/scholarDTO';
 import { Observable, map } from 'rxjs';
 import { PaymentDTO } from '../dtos/response/paymentDTO';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ScholarService {
   getBanks() {
-    return this.http.get('http://localhost:8080/banks');
+    return this.http.get(`${environment.apiUrl}/banks`);
   }
 
   getScholars() {
-    return this.http.get('http://localhost:8080/scholars');
+    return this.http.get(`${environment.apiUrl}/scholars`);
   }
 
   updateScholar(scholar: ScholarDTO) {
-    return this.http.put('http://localhost:8080/scholars', scholar).pipe(
+    return this.http.put(`${environment.apiUrl}/scholars`, scholar).pipe(
       map((result) => {
         return result;
       })
@@ -25,7 +26,7 @@ export class ScholarService {
   }
 
   createScholar(scholar: ScholarDTO): Observable<HttpResponse<any>> {
-    return this.http.post<any>('http://localhost:8080/scholars', scholar).pipe(
+    return this.http.post<any>(`${environment.apiUrl}/scholars`, scholar).pipe(
       map((result) => {
         return result;
       })
@@ -34,46 +35,8 @@ export class ScholarService {
 
   deleteScholar(scholarId: any) {
     this.http
-      .delete(`http://localhost:8080/scholars/${scholarId}`)
+      .delete(`${environment.apiUrl}/scholars/${scholarId}`)
       .subscribe(() => console.log('user deleted'));
-  }
-
-  getPayments(id: any) {
-    return this.http.get(`http://localhost:8080/scholars/${id}/payments`);
-  }
-
-  createPayment(payment: PaymentDTO) {
-    return this.http
-      .post(
-        `http://localhost:8080/scholars/${payment.scholarId}/payments`,
-        payment
-      )
-      .pipe(
-        map((result) => {
-          return result;
-        })
-      );
-  }
-
-  updatePaymentStatus(payment: PaymentDTO) {
-    return this.http
-      .patch(
-        `http://localhost:8080/scholars/${payment.scholarId}/payments/${payment.id}/status`,
-        payment
-      )
-      .pipe(
-        map((result) => {
-          return result;
-        })
-      );
-  }
-
-  deletePayment(scholarId: any, paymentId: any) {
-    this.http
-      .delete(
-        `http://localhost:8080/scholars/${scholarId}/payments/${paymentId}`
-      )
-      .subscribe(() => console.log('payment deleted'));
   }
 
   constructor(private http: HttpClient) {}

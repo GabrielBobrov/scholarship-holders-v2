@@ -5,6 +5,7 @@ import { CreatePaymentComponent } from '../create-payment/create-payment.compone
 import { Router } from '@angular/router';
 import { UpdateScholarComponent } from '../update-scholar/update-scholar.component';
 import { UpdatePaymentComponent } from '../update-payment/update-payment.component';
+import { PaymentsService } from '../services/payments.service';
 
 @Component({
   selector: 'app-table-payments',
@@ -16,14 +17,14 @@ export class TablePaymentsComponent implements OnInit {
   scholarId: any;
 
   constructor(
-    private scholarService: ScholarService,
+    private paymentService: PaymentsService,
     private dialogService: DialogService,
     private route: Router
   ) {}
 
   ngOnInit() {
     this.scholarId = localStorage.getItem('currentPaymentId');
-    this.scholarService.getPayments(this.scholarId).subscribe((data: any) => {
+    this.paymentService.getPayments(this.scholarId).subscribe((data: any) => {
       this.payments = data;
     });
   }
@@ -48,7 +49,7 @@ export class TablePaymentsComponent implements OnInit {
 
   deletePayment(row: any) {
     console.log(row);
-    this.scholarService.deletePayment(this.scholarId, row.id);
+    this.paymentService.deletePayment(this.scholarId, row.id);
     window.location.reload();
   }
 }

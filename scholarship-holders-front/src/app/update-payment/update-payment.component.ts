@@ -4,6 +4,7 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ScholarService } from '../services/scholar.service';
 import { ScholarDTO } from '../dtos/response/scholarDTO';
 import { PaymentDTO } from '../dtos/response/paymentDTO';
+import { PaymentsService } from '../services/payments.service';
 
 @Component({
   selector: 'app-update-payment',
@@ -15,7 +16,7 @@ export class UpdatePaymentComponent {
     public router: Router,
     public config: DynamicDialogConfig,
     private ref: DynamicDialogRef,
-    private scholarService: ScholarService
+    private paymentService: PaymentsService
   ) {}
   row = new PaymentDTO();
   editedRow = JSON.parse(JSON.stringify(this.row));
@@ -32,7 +33,7 @@ export class UpdatePaymentComponent {
   onSubmit() {
     console.log('edited row ', this.editedRow);
 
-    this.scholarService
+    this.paymentService
       .updatePaymentStatus(this.editedRow)
       .subscribe((response) => {
         console.log(response);

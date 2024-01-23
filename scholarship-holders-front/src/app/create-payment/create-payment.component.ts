@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ScholarService } from '../services/scholar.service';
 import { ScholarDTO } from '../dtos/response/scholarDTO';
 import { PaymentDTO } from '../dtos/response/paymentDTO';
+import { PaymentsService } from '../services/payments.service';
 
 @Component({
   selector: 'app-create-payment',
@@ -13,12 +14,12 @@ export class CreatePaymentComponent {
   row = new PaymentDTO();
   errorMessage: any;
 
-  constructor(public router: Router, private scholarService: ScholarService) {}
+  constructor(public router: Router, private paymentService: PaymentsService) {}
 
   onSubmit() {
     console.log(this.row);
     this.row.scholarId = localStorage.getItem('currentPaymentId');
-    this.scholarService.createPayment(this.row).subscribe(
+    this.paymentService.createPayment(this.row).subscribe(
       () => {
         this.closeModal();
       },
