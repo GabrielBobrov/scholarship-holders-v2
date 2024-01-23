@@ -64,6 +64,6 @@ public class ScholarEntity {
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
 
-    @OneToMany(mappedBy = "scholar", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "scholar")
     private List<PaymentEntity> payments;
 }

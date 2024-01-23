@@ -2,6 +2,7 @@ package com.scholarshipholders.infrastructure.entity.payment;
 
 import com.scholarshipholders.infrastructure.entity.payment.enums.PaymentStatusEnum;
 import com.scholarshipholders.infrastructure.entity.scholar.ScholarEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -17,6 +18,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
@@ -42,6 +45,7 @@ public class PaymentEntity {
     private PaymentStatusEnum paymentStatus;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "scholar_id")
     private ScholarEntity scholar;
 
