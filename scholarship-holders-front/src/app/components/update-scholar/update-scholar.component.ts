@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ScholarDTO } from '../dtos/response/scholarDTO';
-import { ScholarService } from '../services/scholar.service';
+import { ScholarDTO } from '../../dtos/response/scholarDTO';
+import { ScholarService } from '../../services/scholar.service';
 
 @Component({
   selector: 'app-update-scholar',

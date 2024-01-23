@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ScholarService } from '../services/scholar.service';
-import { ScholarDTO } from '../dtos/response/scholarDTO';
-import { PaymentDTO } from '../dtos/response/paymentDTO';
-import { PaymentsService } from '../services/payments.service';
+import { ScholarService } from '../../services/scholar.service';
+import { ScholarDTO } from '../../dtos/response/scholarDTO';
+import { PaymentDTO } from '../../dtos/response/paymentDTO';
+import { PaymentsService } from '../../services/payments.service';
 
 @Component({
   selector: 'app-create-payment',

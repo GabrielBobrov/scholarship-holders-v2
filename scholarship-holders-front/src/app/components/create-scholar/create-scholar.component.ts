@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ScholarDTO } from '../dtos/response/scholarDTO';
-import { ScholarService } from '../services/scholar.service';
+import { ScholarDTO } from '../../dtos/response/scholarDTO';
+import { ScholarService } from '../../services/scholar.service';
 
 @Component({
   selector: 'app-create-scholar',

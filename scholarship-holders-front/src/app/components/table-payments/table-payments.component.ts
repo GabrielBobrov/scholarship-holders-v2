@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ScholarService } from '../services/scholar.service';
+import { ScholarService } from '../../services/scholar.service';
 import { DialogService } from 'primeng/dynamicdialog';
 import { CreatePaymentComponent } from '../create-payment/create-payment.component';
 import { Router } from '@angular/router';
 import { UpdateScholarComponent } from '../update-scholar/update-scholar.component';
 import { UpdatePaymentComponent } from '../update-payment/update-payment.component';
-import { PaymentsService } from '../services/payments.service';
+import { PaymentsService } from '../../services/payments.service';
 
 @Component({
   selector: 'app-table-payments',
